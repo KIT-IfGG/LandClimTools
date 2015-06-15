@@ -13,7 +13,7 @@ resample_LandClim_maps <- function(LandClimRasterStack, targetResolution=25){
   stack(res)
 }
 
-write_LandClim_maps <- function(LandClimRasterStack, nodata_value="-9999", lcResolution=25, ex=F {
+write_LandClim_maps <- function(LandClimRasterStack, nodata_value="-9999", lcResolution=25, ex=F) {
   if (ex==F) ex <- (extent(LandClimRasterStack))  
   LandClimRasterStack_list <- lapply(unstack(LandClimRasterStack), function(x) crop(x, ex))
   rs <- stack(LandClimRasterStack_list)
