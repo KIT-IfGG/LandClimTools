@@ -1,7 +1,7 @@
 resample_LandClim_maps <- function(LandClimRasterStack, targetResolution=25){
-  require(raster)
-  r <- raster(LandClimRasterStack, layer=1)
-  rt <- raster(extent(r), crs=projection(r))
+
+  r <- raster::raster(LandClimRasterStack, layer=1)
+  rt <- rasrer::raster(extent(r), crs=projection(r))
   res(rt) <- targetResolution
   
   foo <- function(x){   
@@ -79,8 +79,7 @@ plot_elevation_gradient <- function(elevationBiomassOut, species, selection=10, 
 }
 
 read_species_xml <- function(file) {
-  require(XML)
-  doc <- xmlTreeParse(file)
+  doc <- XML::xmlTreeParse(file)
   daten <- t(xmlSApply(xmlRoot(doc), function(x) xmlSApply(x, xmlValue)))
   rownames(daten) <- NULL
   daten <- data.frame(daten)
@@ -92,13 +91,13 @@ read_species_xml <- function(file) {
 
 write_species_xml <- function(x, file) {
   names <- colnames(x)
-  suppressWarnings(tr <- xmlTree("species"))
+  suppressWarnings(tr <- XML::xmlTree("species"))
   for (i in 1:NROW(x)) {
     tr$addTag("set", close=FALSE)
     for (j in names) { tr$addTag(j, as.character(x[i, j])) }
     tr$closeTag()
   }
-  invisible(saveXML(tr$value(), file=file))
+  invisible(XML::saveXML(tr$value(), file=file))
 }
 
 global_coordinates <- function(x.local, y.local, row, col, a){
