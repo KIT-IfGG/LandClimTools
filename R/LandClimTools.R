@@ -191,7 +191,7 @@ profound_climate_to_landclim <- function(climate, header, file="climate.txt"){
   climate <- cbind(temp[,grep("x", names(temp))], precip[,grep("x", names(temp))])
   
   writeLines(header, con=file)
-  write.table(climate, file=file, append=TRUE, col.names = FALSE)  
+  write.table(climate, file=file, append=TRUE, col.names = FALSE, quote=FALSE)  
 }
 
 
