@@ -1,6 +1,6 @@
-resample_LandClim_maps <- function(LandClimRasterStack, targetResolution=25){
+resample_landclim_maps <- function(landclimRasterStack, targetResolution=25){
 
-  r <- raster::raster(LandClimRasterStack, layer=1)
+  r <- raster::raster(landclimRasterStack, layer=1)
   rt <- rasrer::raster(extent(r), crs=projection(r))
   res(rt) <- targetResolution
   
@@ -9,25 +9,24 @@ resample_LandClim_maps <- function(LandClimRasterStack, targetResolution=25){
     rre[is.na(rre)] <- -9999
     rre 
   }
-  res <- lapply(unstack(LandClimRasterStack), foo)
+  res <- lapply(unstack(landclimRasterStack), foo)
   stack(res)
 }
 
-write_LandClim_maps <- function(LandClimRasterStack, nodata_value="-9999", lcResolution=25, ex=F) {
-  if (ex==F) ex <- (extent(LandClimRasterStack))  
-  LandClimRasterStack_list <- lapply(unstack(LandClimRasterStack), function(x) crop(x, ex))
-  rs <- stack(LandClimRasterStack_list)
-  names(rs) <- names(LandClimRasterStack)
-  writeRaster(rs, "landClimMaps.tif", overwrite=T)
+write_landclim_maps <- function(landclimRasterStack, nodata_value="-9999", lcResolution=25, folder=getwd()) {
+  ex <- (extent(landclimRasterStack))  
+  landclimRasterStack_list <- lapply(unstack(landclimRasterStack), function(x) crop(x, ex))
+  rs <- stack(landclimRasterStack_list)
+  names(rs) <- names(landclimRasterStack)
+  writeRaster(rs, paste(folder, "/landclim_maps.tif", sep=""), overwrite=T)
   rm(rs)
-  foo <- function(x){
-    
-    sink(paste(names(x), ".asc", sep=""))
+  foo <- function(x){    
+    sink(paste(folder, "/", names(x), ".asc", sep=""))
     writeLines(c(paste("ncols", ncol(x)), paste("nrows", nrow(x)), paste("xllcorner", xmin(x)), paste("yllcorner", ymin(x)), paste("cellsize", lcResolution), paste("nodata_value ", nodata_value)))
     sink()      
-    write.table(matrix(round(x[]), nrow=nrow(x), ncol=ncol(x), byrow=T), file=paste(names(x), ".asc", sep=""), append=T, quote = FALSE, row.names = FALSE, col.names = FALSE)    
+    write.table(matrix(round(x[]), nrow=nrow(x), ncol=ncol(x), byrow=T), file=paste(folder, "/", names(x), ".asc", sep=""), append=T, quote = FALSE, row.names = FALSE, col.names = FALSE)    
   }    
-  lapply(LandClimRasterStack_list, function(x) foo(x))
+  lapply(landclimRasterStack_list, function(x) foo(x))
 }
 
 change_climate <- function(inputPath, outputPath, dt=0, dn=0){
