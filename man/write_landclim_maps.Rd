@@ -10,19 +10,22 @@ Write landClim maps
 Takes raster stack in the appropiate resolution and writes LandClim maps in the required format.
 }
 \usage{
-write_landclim_maps(landClimRasterStack, nodata_value = "-9999", lcResolution = 25)
+write_landclim_maps(landClimRasterStack, nodata_value = "-9999", lcResolution = 25, folder)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{LandClimRasterStack}{
-%%     ~~Describe \code{LandClimRasterStack} here~~
-}
+  \item{landClimRasterStack}{
+    %%     ~~Describe \code{LandClimRasterStack} here~~
+  }
   \item{nodata_value}{
-%%     ~~Describe \code{nodata_value} here~~
-}
+    %%     ~~Describe \code{nodata_value} here~~
+  }
   \item{lcResolution}{
-%%     ~~Describe \code{lcResolution} here~~
-}
+    %%     ~~Describe \code{lcResolution} here~~
+  }
+  \item{folder}{
+    % TODO: document this parameter
+  }
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~

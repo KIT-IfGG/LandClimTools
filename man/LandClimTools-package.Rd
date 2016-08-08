@@ -4,16 +4,17 @@
 \docType{package}
 
 \title{Package documentation for LandClimTools}
+\description{The LandClimTools package contains several useful functions for working with the LandClim software}
 
 \references{
   Website at ETH Zurich giving an introduction to LandClim:\cr
-  \code{\link{https://www1.ethz.ch/fe/research/disturbance/landclim}}
+  \code{https://www1.ethz.ch/fe/research/disturbance/landclim}
 
   Website about the LandClim software:\cr
-  \code{\link{https://uwis-server102.ethz.ch/openaccess/software/view/2}}
+  \code{https://uwis-server102.ethz.ch/openaccess/software/view/2}
 
   Style guide for R packages by Hadley Wickham:\cr
-  \code{\link{http://r-pkgs.had.co.nz/style.html}}
+  \code{http://r-pkgs.had.co.nz/style.html}
 
   Schumacher, S., H. Bugmann, and D. J. Mladenoff. 2004. Improving the formulation of tree growth and succession in a spatially explicit landscape model. Ecological Modelling 180:175-194.
 

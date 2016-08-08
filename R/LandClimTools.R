@@ -68,7 +68,7 @@ dbh_to_biomass <- function(dbh, leafHabit, allometry="SCHUMACHER") {
 }
 
 calculate_landscape_size <- function(dem){
-  prod(dim(dem)) * prod(res(dem)) / (100*100)
+  return(prod(dim(dem)) * prod(res(dem)) / (100*100))
 }
 
 plot_elevation_gradient <- function(elevationBiomassOut, species, selection=10,   lty=1,  cols= rainbow(length(species)), plotlegend=TRUE){
@@ -159,7 +159,7 @@ tree_coordinates <- function(file, a=25, biomasslargetrees=10, decade=30, oldtre
 }
 
 
-plot_forest <- function(trees, species,  scol, plotlegend=TRUE, a=25, aspect=1, cex=1){
+plot_forest <- function(trees, species = unique(trees$species),  scol = rainbow(length(species)), plotlegend=TRUE, a=25, aspect=1, cex=1){
   trees$colors <- scol[match(trees$species, species)]
   plot(y ~ x, trees, pch=16, cex=cex, col=trees$colors, type="p", xlab="", ylab="", asp=aspect)
   if(plotlegend) legend("topright", legend=species, pch=16, col=scol, bg="white")

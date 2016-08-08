@@ -1,50 +1,22 @@
 \name{resample_landclim_maps}
 \alias{resample_landclim_maps}
-%- Also NEED an '\alias' for EACH other topic documented here.
-\title{
-%%  ~~function to do ... ~~
-Resample LandClim maps
-}
-\description{
-Function to resample LandClim maps of any resolution to required resolution of 25 m (or 30 m).
-}
-\usage{
-resample_landclim_maps(landClimRasterStack, targetResolution = 25)
-}
-%- maybe also 'usage' for other objects documented here.
-\arguments{
-  \item{LandClimRasterStack}{ Raster stack (with all required input maps)
-%%     ~~Describe \code{LandClimRasterStack} here~~
-}
-  \item{targetResolution}{
-%%     ~~Describe \code{targetResolution} here~~
-}
-}
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
-\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-Raster stack ready to be written in LandClim format.
-}
-\references{
-%% ~put references to the literature/web site here ~
-}
-\author{
-%%  ~~who you are~~
-}
-\note{
-%%  ~~further notes~~
-}
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
+\title{Resample LandClim maps}
+\description{Function to resample LandClim maps of any resolution to required resolution of 25 m (or 30 m).}
+
+\usage{
+  resample_landclim_maps(landClimRasterStack, targetResolution = 25)
+}
+\arguments{
+  \item{landClimRasterStack}{Raster stack (with all required input maps)}
+  \item{targetResolution}{
+    %%     ~~Describe \code{targetResolution} here~~
+  }
+}
+\value{Raster stack ready to be written in LandClim format.}
 
 \seealso{
-\code{\link{write_landclim_maps}}
+  \code{\link{write_landclim_maps}}
 }
 \examples{
 gk_projection<-CRS("+init=epsg:31467")
@@ -86,5 +58,3 @@ maps25 <- resample_landclim_maps(landClimRasterStack=maps)
 plot(maps25$dem)
 
 }
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
