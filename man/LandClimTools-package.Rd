@@ -2,37 +2,24 @@
 \alias{LandClimTools-package}
 \alias{LandClimTools}
 \docType{package}
-\title{
-LandClimTools
-}
-\description{
-This package contains functions useful to create LandClim input files, analyse and visualize LandClim output.
-}
-\details{
-\tabular{ll}{
-Package: \tab LandClimTools\cr
-Type: \tab Package\cr
-Version: \tab 1.0\cr
-Date: \tab 2015-05-05\cr
-License: \tab License?\cr
-}
-This package contains functions useful to create LandClim input files, analyse and visualize LandClim output.
-}
-\author{
-Send complains to dolos@kit.edu
-}
+
+\title{Package documentation for LandClimTools}
+
 \references{
-Website at ETH Zurich giving an introduction to LandClim:
-http://www.fe.ethz.ch/research/disturbance/landclim/index_EN
+  Website at ETH Zurich giving an introduction to LandClim:\cr
+  \code{\link{https://www1.ethz.ch/fe/research/disturbance/landclim}}
 
-Style guide for R packages by Hadley Wickham: http://r-pkgs.had.co.nz/style.html
+  Website about the LandClim software:\cr
+  \code{\link{https://uwis-server102.ethz.ch/openaccess/software/view/2}}
 
-Schumacher, S., H. Bugmann, and D. J. Mladenoff. 2004. Improving the formulation of tree growth and succession in a spatially explicit landscape model. Ecological Modelling 180:175-194.
+  Style guide for R packages by Hadley Wickham:\cr
+  \code{\link{http://r-pkgs.had.co.nz/style.html}}
 
-Schumacher, S. and H. Bugmann. 2006. The relative importance of climatic effects, wildfires and management for future forest landscape dynamics in the Swiss Alps. Global Change Biology 12:1435-1450.
+  Schumacher, S., H. Bugmann, and D. J. Mladenoff. 2004. Improving the formulation of tree growth and succession in a spatially explicit landscape model. Ecological Modelling 180:175-194.
 
-Schumacher, S., B. Reineking, J. Sibold, and H. Bugmann. 2006. Modeling the impact of climate and vegetation on fire regimes in mountain landscapes. Landscape Ecology 21:539-554.
+  Schumacher, S. and H. Bugmann. 2006. The relative importance of climatic effects, wildfires and management for future forest landscape dynamics in the Swiss Alps. Global Change Biology 12:1435-1450.
 
+  Schumacher, S., B. Reineking, J. Sibold, and H. Bugmann. 2006. Modeling the impact of climate and vegetation on fire regimes in mountain landscapes. Landscape Ecology 21:539-554.
 }
 
 \keyword{ package }
