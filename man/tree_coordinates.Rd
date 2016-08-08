@@ -8,7 +8,7 @@ Calculate tree coordinates.
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-tree_coordinates(file = "Data/Output/fullOut_30.csv", a = 25, biomasslargetrees = 10, silent=T)
+tree_coordinates(file = "Data/Output/fullOut_30.csv", a = 25, biomasslargetrees = 10, silent=TRUE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -46,7 +46,7 @@ Klara Dolos
 \code{\link{plot_forest}}
 }
 \examples{
-trees <- tree_coordinates(file=system.file("fullOut_50.csv", package = "landclimtools"), a=25)
+trees <- tree_coordinates(file=system.file("fullOut_50.csv", package = "LandClimTools"), a=25)
 
 ### Function also creates tree ID for su
 ## oldtrees <- tree_coordinates(file=paste(path, "fullOut_49.csv", sep=""), a=25, decade=39, oldtrees=NULL)

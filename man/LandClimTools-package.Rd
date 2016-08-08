@@ -39,7 +39,7 @@ ex <- extent(0, nc*res, 0, nr*res)
 dem <- raster(nrows=nr, ncols=nc, ex)
 projection(dem) <- gk_projection
 dem
-dem[] <- rep(seq(400, 2200,len=nr), each=nc) 
+dem[] <- rep(seq(400, 2200,len=nr), each=nc)
 x11()
 plot(dem)
 
@@ -54,7 +54,7 @@ soil  ### Check min, max values
 
 ###  LandClim map "landtype".
 landtype <- slope
-landtype[] <- 1  
+landtype[] <- 1
 
 ### Aspect
 aspect <- slope
@@ -70,18 +70,18 @@ names(maps) <- c("dem", "slope", "aspect", "soil", "landtype", "nitro")
 x11()
 plot(maps)
 
-maps25 <- resample_LandClim_maps(LandClimRasterStack=maps)
+maps25 <- resample_landclim_maps(landClimRasterStack=maps)
 res(maps25$dem)
 
 ### Write as LandClim files.
-write_LandClim_maps(LandClimRasterStack=maps25, nodata_value="-9999", lcResolution=25, ex=ex)
+write_landclim_maps(landClimRasterStack=maps25, nodata_value="-9999", lcResolution=25)
 
 ################################################################### Plot LandClim output ####
 ### Elevation gradient
 dat <- read.table(system.file("elevation_biomass_out.csv", package = "LandClimTools"), sep=",", dec=".", header=TRUE)
 species <- c("abiealba" , "piceabie", "fagusylv", "pinusilv", "querpetr")
 x11()
-plot_elevation_gradient(elevationBiomassOut=dat, species=species, selection=30, lty=1,  cols= rainbow(length(species)))  
+plot_elevation_gradient(elevationBiomassOut=dat, species=species, selection=30, lty=1,  cols= rainbow(length(species)))
 
 ### LandClim forest
 trees <- tree_coordinates(file=system.file("fullOut_50.csv", package = "LandClimTools"), a=25)

@@ -43,18 +43,18 @@ create_movie(x)
 }
 \examples{
 
-## full <- read.csv(file="fullOut_30.csv", strip.white=TRUE) 
+## full <- read.csv(file="fullOut_30.csv", strip.white=TRUE)
 ## species <- unique(full$species)
 
 ## fi <- data.frame(file=c("fullOut_30.csv", "fullOut_31.csv","fullOut_32.csv","fullOut_33.csv","fullOut_34.csv"), decade=c(30, 31,32,33,34))
 
 ## pdf(paste(path,"movie.pdf", sep=""))
 ## par(mfrow=c(2,2))
-## create_movie(files=fi$file, decades=fi$decade, a=25, species=species,  scol=rainbow(length(species)), plotlegend=T, aspect=1)
+## create_movie(files=fi$file, decades=fi$decade, a=25, species=species,  scol=rainbow(length(species)), plotlegend=TRUE, aspect=1)
 ## dev.off()
 
 ## library(animation)
-## saveGIF(create_movie(files=fi$file, decades=fi$decade, a=25, species=species,  scol=rainbow(length(species)), plotlegend=T, aspect=1), movie.name="LandClimForest.gif")
+## saveGIF(create_movie(files=fi$file, decades=fi$decade, a=25, species=species,  scol=rainbow(length(species)), plotlegend=TRUE, aspect=1), movie.name="LandClimForest.gif")
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

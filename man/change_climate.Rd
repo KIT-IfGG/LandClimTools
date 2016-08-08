@@ -7,7 +7,7 @@ Simulate climate change.
 }
 \description{
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
-The funcion reads a LandClim climate file and adds a constnant to temperature and precipitation.
+The funcion reads a LandClim climate file and adds a constant to temperature and precipitation.
 }
 \usage{
 change_climate(inputPath, outputPath, dt = 0, dn = 0)
@@ -63,7 +63,7 @@ Klara Dolos
 ##--	or do  help(data=index)  for the standard data sets.
 
 ## The function is currently defined as
-function (inputPath, outputPath, dt = 0, dn = 0) 
+function (inputPath, outputPath, dt = 0, dn = 0)
 {
     header <- readLines(inputPath)
     header <- header[1:14]
@@ -72,8 +72,8 @@ function (inputPath, outputPath, dt = 0, dn = 0)
     clim[, 14:25] <- clim[, 14:25] + dn
     clim[, 14:25][clim[, 14:25] < 0] <- 0
     writeLines(header, outputPath)
-    write.table(clim, outputPath, append = T, row.names = F, 
-        col.names = F)
+    write.table(clim, outputPath, append = TRUE, row.names = FALSE,
+        col.names = FALSE)
   }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

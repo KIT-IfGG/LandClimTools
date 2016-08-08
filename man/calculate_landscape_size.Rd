@@ -2,12 +2,12 @@
 \alias{calculate_landscape_size}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~ 
+%%  ~~function to do ... ~~
 Calculate landscape size
 }
 \description{
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
-Function ot caculate the landscape size using the LandClim input digital elevation ascii-file (e.g. dem.asc).
+Function to caculate the landscape size using the LandClim input digital elevation ascii-file (e.g. dem.asc).
 }
 \usage{
 calculate_landscape_size(dem)
@@ -49,7 +49,7 @@ calculate_landscape_size(dem)
 ##--	or do  help(data=index)  for the standard data sets.
 
 ## The function is currently defined as
-function (dem) 
+function (dem)
 {
     prod(dim(dem)) * prod(res(dem))/(100 * 100)
   }

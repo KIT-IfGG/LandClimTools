@@ -1,5 +1,5 @@
-\name{resample_LandClim_maps}
-\alias{resample_LandClim_maps}
+\name{resample_landclim_maps}
+\alias{resample_landclim_maps}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 %%  ~~function to do ... ~~
@@ -9,7 +9,7 @@ Resample LandClim maps
 Function to resample LandClim maps of any resolution to required resolution of 25 m (or 30 m).
 }
 \usage{
-resample_LandClim_maps(LandClimRasterStack, targetResolution = 25)
+resample_landclim_maps(landClimRasterStack, targetResolution = 25)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -44,7 +44,7 @@ Raster stack ready to be written in LandClim format.
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{\link{write_LandClim_maps}}
+\code{\link{write_landclim_maps}}
 }
 \examples{
 gk_projection<-CRS("+init=epsg:31467")
@@ -55,10 +55,10 @@ res <- 45
 ex <- extent(0, nc*res, 0, nr*res)
 dem <- raster(nrows=nr, ncols=nc, ex)
 projection(dem) <- gk_projection
-dem[] <- rep(seq(500, 2200,len=nr), each=nc) 
+dem[] <- rep(seq(500, 2200,len=nr), each=nc)
 
 ### LandClim map "slope" and "aspect".
-slope <- terrain(dem, filename="slopeAspect.tif", opt='slope', unit="degrees", overwrite = T)
+slope <- terrain(dem, filename="slopeAspect.tif", opt='slope', unit="degrees", overwrite = TRUE)
 slope[]<- 0
 
 ###  LandClim map "soil".
@@ -68,7 +68,7 @@ soil  ### Check min, max values
 
 ###  LandClim map "landtype".
 landtype <- slope
-landtype[] <- 1  
+landtype[] <- 1
 
 ### Aspect (dummy)
 aspect <- slope
@@ -82,7 +82,7 @@ nitro[] <- 1
 maps <- stack(dem, slope, aspect, soil, landtype, nitro)
 names(maps) <- c("dem", "slope", "aspect", "soil", "landtype", "nitro")
 
-maps25 <- resample_LandClim_maps(LandClimRasterStack=maps)
+maps25 <- resample_landclim_maps(landClimRasterStack=maps)
 plot(maps25$dem)
 
 }

@@ -59,10 +59,10 @@ plot_elevation_gradient(elevationBiomassOut, species, selection = 10, lty = 1, c
 \code{\link{plot_forest}}
 }
 \examples{
-dat <- read.table(system.file("elevation_biomass_out.csv", package = "landclimtools"), sep=",", dec=".", header=T)
+dat <- read.table(system.file("elevation_biomass_out.csv", package = "LandClimTools"), sep=",", dec=".", header=TRUE)
 
 species <- c("abiealba" , "piceabie", "fagusylv", "pinusilv", "querpetr")
-plot_elevation_gradient(elevationBiomassOut=dat, species=species, selection=30, lty=1,  cols= rainbow(length(species)))  
+plot_elevation_gradient(elevationBiomassOut=dat, species=species, selection=30, lty=1,  cols= rainbow(length(species)))
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

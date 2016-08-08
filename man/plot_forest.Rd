@@ -8,7 +8,7 @@ Plot LandClim forest
 
 }
 \usage{
-plot_forest(trees, species = unique(trees$species), scol = rainbow(length(species)), plotlegend = T, a = 25, aspect = 1, cex = 1, type = "p")
+plot_forest(trees, species = unique(trees$species), scol = rainbow(length(species)), plotlegend = TRUE, a = 25, aspect = 1, cex = 1, type = "p")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -31,7 +31,7 @@ Argument asp in function plot.
   \item{cex}{
 Argument cex in function plot.
 }
- 
+
 }
 \details{
 }
@@ -52,7 +52,7 @@ Klara Dolos
 }
 \examples{
 
-trees <- tree_coordinates(file=system.file("fullOut_50.csv", package = "landclimtools"), a=25)
+trees <- tree_coordinates(file=system.file("fullOut_50.csv", package = "LandClimTools"), a=25)
 
 range(trees$col)
 stand <- trees[trees$row > 20 & trees$row <=40,]
@@ -63,7 +63,7 @@ stand$col <- stand$col - min(stand$col)
 
 x11(width=7, height=7)
 par(mar=c(2,2,1,1))
-plot_forest(trees=stand, species=unique(stand$species),  scol=rainbow(length(unique(stand$species))), plotlegend=T, aspect=1, cex=sqrt(stand$biomass)/2)
+plot_forest(trees=stand, species=unique(stand$species),  scol=rainbow(length(unique(stand$species))), plotlegend=TRUE, aspect=1, cex=sqrt(stand$biomass)/2)
 
 
 }

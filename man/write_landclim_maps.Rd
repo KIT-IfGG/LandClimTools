@@ -1,5 +1,5 @@
-\name{write_LandClim_maps}
-\alias{write_LandClim_maps}
+\name{write_landclim_maps}
+\alias{write_landclim_maps}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 %%  ~~function to do ... ~~
@@ -10,7 +10,7 @@ Write landClim maps
 Takes raster stack in the appropiate resolution and writes LandClim maps in the required format.
 }
 \usage{
-write_LandClim_maps(LandClimRasterStack, nodata_value = "-9999", lcResolution = 25, ex)
+write_landclim_maps(landClimRasterStack, nodata_value = "-9999", lcResolution = 25)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -22,9 +22,6 @@ write_LandClim_maps(LandClimRasterStack, nodata_value = "-9999", lcResolution = 
 }
   \item{lcResolution}{
 %%     ~~Describe \code{lcResolution} here~~
-}
-  \item{ex}{
-%%     ~~Describe \code{ex} here~~
 }
 }
 \details{
@@ -58,25 +55,25 @@ write_LandClim_maps(LandClimRasterStack, nodata_value = "-9999", lcResolution = 
 ##--	or do  help(data=index)  for the standard data sets.
 
 ## The function is currently defined as
-function (LandClimRasterStack, nodata_value = "-9999", lcResolution = 25, 
-    ex) 
+function (LandClimRasterStack, nodata_value = "-9999", lcResolution = 25,
+    ex)
 {
-    LandClimRasterStack_list <- lapply(unstack(LandClimRasterStack), 
+    LandClimRasterStack_list <- lapply(unstack(LandClimRasterStack),
         function(x) crop(x, ex))
     rs <- stack(LandClimRasterStack_list)
     names(rs) <- names(LandClimRasterStack)
-    writeRaster(rs, "landClimMaps.tif", overwrite = T)
+    writeRaster(rs, "landClimMaps.tif", overwrite = TRUE)
     rm(rs)
     foo <- function(x) {
         sink(paste(names(x), ".asc", sep = ""))
-        writeLines(c(paste("ncols", ncol(x)), paste("nrows", 
-            nrow(x)), paste("xllcorner", xmin(x)), paste("yllcorner", 
-            ymin(x)), paste("cellsize", lcResolution), paste("nodata_value ", 
+        writeLines(c(paste("ncols", ncol(x)), paste("nrows",
+            nrow(x)), paste("xllcorner", xmin(x)), paste("yllcorner",
+            ymin(x)), paste("cellsize", lcResolution), paste("nodata_value ",
             nodata_value)))
         sink()
-        write.table(matrix(round(x[]), nrow = nrow(x), ncol = ncol(x), 
-            byrow = T), file = paste(names(x), ".asc", sep = ""), 
-            append = T, quote = FALSE, row.names = FALSE, col.names = FALSE)
+        write.table(matrix(round(x[]), nrow = nrow(x), ncol = ncol(x),
+            byrow = TRUE), file = paste(names(x), ".asc", sep = ""),
+            append = TRUE, quote = FALSE, row.names = FALSE, col.names = FALSE)
     }
     lapply(LandClimRasterStack_list, function(x) foo(x))
   }
