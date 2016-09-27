@@ -21,25 +21,10 @@ $ sudo apt install git texlive r-base libxml2-dev libproj-dev libgdal-dev
 
 ---
 
-Then you'll need to install the R-Packages required.
-
-For this start an R workspace with the following command:
+Then you'll need to install the R-Packages required (as listed in the "Depends" section of the [`DESCRIPTION` file](./DESCRIPTION)):
 ```bash
-$ R
+$ R -e "install.packages(c('rgdal', 'raster', 'XML'), dependencies = TRUE, repos = 'https://cran.r-project.org')"
 ```
-
-In the R command line, type the following commands. When you are asked, if you want to create a personal library, you can answer with `y` for yes. And if you are asked to select a mirror, choose the one nearest to you (e.g. in Germany the one at the university of Münster is good):
-```r
-> install.packages("rgdal", dependencies = TRUE)
-> install.packages("raster", dependencies = TRUE)
-> install.packages("XML", dependencies = TRUE)
-```
-
-Quit the R command line with the following command:
-```r
-> q()
-```
-When it asks you if you want to save the workspace image, you can answer with `n` for no.
 
 ---
 
