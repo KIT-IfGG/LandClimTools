@@ -2,37 +2,25 @@
 \alias{LandClimTools-package}
 \alias{LandClimTools}
 \docType{package}
-\title{
-LandClimTools
-}
-\description{
-This package contains functions useful to create LandClim input files, analyse and visualize LandClim output.
-}
-\details{
-\tabular{ll}{
-Package: \tab LandClimTools\cr
-Type: \tab Package\cr
-Version: \tab 1.0\cr
-Date: \tab 2015-05-05\cr
-License: \tab License?\cr
-}
-This package contains functions useful to create LandClim input files, analyse and visualize LandClim output.
-}
-\author{
-Send complains to dolos@kit.edu
-}
+
+\title{Package documentation for LandClimTools}
+\description{The LandClimTools package contains several useful functions for working with the LandClim software}
+
 \references{
-Website at ETH Zurich giving an introduction to LandClim:
-http://www.fe.ethz.ch/research/disturbance/landclim/index_EN
+  Website at ETH Zurich giving an introduction to LandClim:\cr
+  \code{https://www1.ethz.ch/fe/research/disturbance/landclim}
 
-Style guide for R packages by Hadley Wickham: http://r-pkgs.had.co.nz/style.html
+  Website about the LandClim software:\cr
+  \code{https://uwis-server102.ethz.ch/openaccess/software/view/2}
 
-Schumacher, S., H. Bugmann, and D. J. Mladenoff. 2004. Improving the formulation of tree growth and succession in a spatially explicit landscape model. Ecological Modelling 180:175-194.
+  Style guide for R packages by Hadley Wickham:\cr
+  \code{http://r-pkgs.had.co.nz/style.html}
 
-Schumacher, S. and H. Bugmann. 2006. The relative importance of climatic effects, wildfires and management for future forest landscape dynamics in the Swiss Alps. Global Change Biology 12:1435-1450.
+  Schumacher, S., H. Bugmann, and D. J. Mladenoff. 2004. Improving the formulation of tree growth and succession in a spatially explicit landscape model. Ecological Modelling 180:175-194.
 
-Schumacher, S., B. Reineking, J. Sibold, and H. Bugmann. 2006. Modeling the impact of climate and vegetation on fire regimes in mountain landscapes. Landscape Ecology 21:539-554.
+  Schumacher, S. and H. Bugmann. 2006. The relative importance of climatic effects, wildfires and management for future forest landscape dynamics in the Swiss Alps. Global Change Biology 12:1435-1450.
 
+  Schumacher, S., B. Reineking, J. Sibold, and H. Bugmann. 2006. Modeling the impact of climate and vegetation on fire regimes in mountain landscapes. Landscape Ecology 21:539-554.
 }
 
 \keyword{ package }
@@ -52,7 +40,7 @@ ex <- extent(0, nc*res, 0, nr*res)
 dem <- raster(nrows=nr, ncols=nc, ex)
 projection(dem) <- gk_projection
 dem
-dem[] <- rep(seq(400, 2200,len=nr), each=nc) 
+dem[] <- rep(seq(400, 2200,len=nr), each=nc)
 x11()
 plot(dem)
 
@@ -67,7 +55,7 @@ soil  ### Check min, max values
 
 ###  LandClim map "landtype".
 landtype <- slope
-landtype[] <- 1  
+landtype[] <- 1
 
 ### Aspect
 aspect <- slope
@@ -83,18 +71,18 @@ names(maps) <- c("dem", "slope", "aspect", "soil", "landtype", "nitro")
 x11()
 plot(maps)
 
-maps25 <- resample_LandClim_maps(LandClimRasterStack=maps)
+maps25 <- resample_landclim_maps(landClimRasterStack=maps)
 res(maps25$dem)
 
 ### Write as LandClim files.
-write_LandClim_maps(LandClimRasterStack=maps25, nodata_value="-9999", lcResolution=25, ex=ex)
+write_landclim_maps(landClimRasterStack=maps25, nodata_value="-9999", lcResolution=25)
 
 ################################################################### Plot LandClim output ####
 ### Elevation gradient
 dat <- read.table(system.file("elevation_biomass_out.csv", package = "LandClimTools"), sep=",", dec=".", header=TRUE)
 species <- c("abiealba" , "piceabie", "fagusylv", "pinusilv", "querpetr")
 x11()
-plot_elevation_gradient(elevationBiomassOut=dat, species=species, selection=30, lty=1,  cols= rainbow(length(species)))  
+plot_elevation_gradient(elevationBiomassOut=dat, species=species, selection=30, lty=1,  cols= rainbow(length(species)))
 
 ### LandClim forest
 trees <- tree_coordinates(file=system.file("fullOut_50.csv", package = "LandClimTools"), a=25)

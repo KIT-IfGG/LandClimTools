@@ -1,32 +1,32 @@
-resample_landclim_maps <- function(landclimRasterStack, targetResolution=25){
+resample_landclim_maps <- function(landClimRasterStack, targetResolution=25){
 
-  r <- raster::raster(landclimRasterStack, layer=1)
-  rt <- rasrer::raster(extent(r), crs=projection(r))
+  r <- raster::raster(landClimRasterStack, layer=1)
+  rt <- raster::raster(extent(r), crs=projection(r))
   res(rt) <- targetResolution
-  
-  foo <- function(x){   
+
+  foo <- function(x){
     rre <- resample(x, rt)
     rre[is.na(rre)] <- -9999
-    rre 
+    rre
   }
-  res <- lapply(unstack(landclimRasterStack), foo)
+  res <- lapply(unstack(landClimRasterStack), foo)
   stack(res)
 }
 
-write_landclim_maps <- function(landclimRasterStack, nodata_value="-9999", lcResolution=25, folder=getwd()) {
-  ex <- (extent(landclimRasterStack))  
-  landclimRasterStack_list <- lapply(unstack(landclimRasterStack), function(x) crop(x, ex))
-  rs <- stack(landclimRasterStack_list)
-  names(rs) <- names(landclimRasterStack)
-  writeRaster(rs, paste(folder, "/landclim_maps.tif", sep=""), overwrite=T)
+write_landclim_maps <- function(landClimRasterStack, nodata_value="-9999", lcResolution=25, folder=getwd()) {
+  ex <- (extent(landClimRasterStack))
+  landClimRasterStack_list <- lapply(unstack(landClimRasterStack), function(x) crop(x, ex))
+  rs <- stack(landClimRasterStack_list)
+  names(rs) <- names(landClimRasterStack)
+  writeRaster(rs, paste0(folder, "/landclim_maps.tif"), overwrite=TRUE)
   rm(rs)
-  foo <- function(x){    
+  foo <- function(x){
     sink(paste(folder, "/", names(x), ".asc", sep=""))
     writeLines(c(paste("ncols", ncol(x)), paste("nrows", nrow(x)), paste("xllcorner", xmin(x)), paste("yllcorner", ymin(x)), paste("cellsize", lcResolution), paste("nodata_value ", nodata_value)))
-    sink()      
-    write.table(matrix(round(x[]), nrow=nrow(x), ncol=ncol(x), byrow=T), file=paste(folder, "/", names(x), ".asc", sep=""), append=T, quote = FALSE, row.names = FALSE, col.names = FALSE)    
-  }    
-  lapply(landclimRasterStack_list, function(x) foo(x))
+    sink()
+    write.table(matrix(round(x[]), nrow=nrow(x), ncol=ncol(x), byrow=TRUE), file=paste(folder, "/", names(x), ".asc", sep=""), append=TRUE, quote = FALSE, row.names = FALSE, col.names = FALSE)
+  }
+  lapply(landClimRasterStack_list, function(x) foo(x))
 }
 
 change_climate <- function(inputPath, outputPath, dt=0, dn=0){
@@ -36,8 +36,8 @@ change_climate <- function(inputPath, outputPath, dt=0, dn=0){
   clim[,2:13] <- clim[,2:13] + dt
   clim[,14:25] <- clim[,14:25] + dn
   clim[,14:25][clim[,14:25] < 0] <- 0
-  writeLines(header, outputPath)  
-  write.table(clim, outputPath, append=T, row.names=F, col.names=F)  
+  writeLines(header, outputPath)
+  write.table(clim, outputPath, append=TRUE, row.names=FALSE, col.names=FALSE)
 }
 
 biomass_to_dbh <- function(biomass, leafHabit, allometry="SCHUMACHER") {
@@ -45,30 +45,30 @@ biomass_to_dbh <- function(biomass, leafHabit, allometry="SCHUMACHER") {
     if(!all(leafHabit %in% c("EVERGREEN", "BROADLEAFEVERGREEN", "DECIDUOUS"))) stop ("unknown leaf habit")
     dbh <- ifelse(leafHabit == "EVERGREEN", exp(3.800 + 0.451 * log(biomass)), exp(3.708 + 0.475 * log(biomass)))
   }
-  
+
   if(allometry=="POWER") {
     carbon_kg <- 500 * biomass # assumption: 50% of dry weight is carbon
-    dbh <- exp(1.3481648 + 0.3977240 * log(carbon_kg))   
+    dbh <- exp(1.3481648 + 0.3977240 * log(carbon_kg))
   }
-  return(dbh)  
+  return(dbh)
 }
 
 dbh_to_biomass <- function(dbh, leafHabit, allometry="SCHUMACHER") {
   if(allometry=="SCHUMACHER") {
     if(!all(leafHabit %in% c("EVERGREEN", "BROADLEAFEVERGREEN", "DECIDUOUS"))) stop ("unknown leaf habit")
-    biomass <- ifelse(leafHabit == "EVERGREEN", exp((log(dbh) - 3.800)/0.451), exp((log(dbh)- 3.708)/0.475))    
+    biomass <- ifelse(leafHabit == "EVERGREEN", exp((log(dbh) - 3.800)/0.451), exp((log(dbh)- 3.708)/0.475))
   }
-  
+
   if(allometry=="POWER") {
     carbon_kg <- exp((log(dbh) - 1.3481648) / 0.3977240)
     biomass <- carbon_kg/500   # assumption: 50% of dry weight is carbon
-    
+
   }
-  return(biomass) 
+  return(biomass)
 }
 
 calculate_landscape_size <- function(dem){
-  prod(dim(dem)) * prod(res(dem)) / (100*100)
+  return(prod(dim(dem)) * prod(res(dem)) / (100*100))
 }
 
 plot_elevation_gradient <- function(elevationBiomassOut, species, selection=10,   lty=1,  cols= rainbow(length(species)), plotlegend=TRUE){
@@ -103,54 +103,54 @@ global_coordinates <- function(x.local, y.local, row, col, a){
   x <- a * row + x.local
   y <- a * col + y.local
   data.frame(x,y)
-}  
+}
 
-tree_coordinates <- function(file, a=25, biomasslargetrees=10, decade=30, oldtrees=NULL, silent=T){
-  full <- read.csv(file, strip.white=TRUE)   
+tree_coordinates <- function(file, a=25, biomasslargetrees=10, decade=30, oldtrees=NULL, silent=TRUE){
+  full <- read.csv(file, strip.white=TRUE)
   full$birth <- decade - full$age/10
   full$cohortID <- paste(full$row, full$col, full$birth, full$species, sep="_")
-  
+
   ln <- 10   ### ln^2 = Number of positions within a cell.
   trees <- full[rep(1:nrow(full), full$stems),]
   trees$ID <- paste(trees$cohortID, unlist(lapply(full$stems, function(x) 1:x)), sep="_")
   if(length(oldtrees)>1){
     m <- match(trees$ID, oldtrees$ID)
     trees$x <- oldtrees$x[m]
-    trees$y <- oldtrees$y[m]    
+    trees$y <- oldtrees$y[m]
   } else{
     trees$x <- NA
     trees$y <- NA
   }
   gmax <- global_coordinates(x.local=a,y.local=a,row=max(full$row), col=max(full$col), a=a)
-  
+
   localgrid <- expand.grid(x.local=seq(1,a, len=ln), y.local=seq(1,a, len=ln))
-  
+
   cells <- unique(trees$cell)
   for(i in 1:length(cells)){
     if (i %in% seq(100, length(cells), by=100) & !silent) cat(paste(i , " ", sep=""))
     if (sum(trees$cell == i)) {
       stand <- trees[trees$cell == i & is.na(trees$x),]
-      if (nrow(stand)>0) {        
-        
+      if (nrow(stand)>0) {
+
         stand$x.local <- NA
         stand$y.local <- NA
-        
+
         largetrees <- stand$biomass > biomasslargetrees
-        
-        pos.largetrees <- sample(seq(1,nrow(localgrid), by=4), sum(largetrees), replace=F)
+
+        pos.largetrees <- sample(seq(1,nrow(localgrid), by=4), sum(largetrees), replace=FALSE)
         stand$x.local[largetrees] <- localgrid[pos.largetrees, "x.local"]
         stand$y.local[largetrees] <- localgrid[pos.largetrees, "y.local"]
-        
-        pos.smalltrees <- sample((1:nrow(localgrid))[!1:nrow(localgrid) %in% pos.largetrees], nrow(stand)-sum(largetrees), replace=T)
-        
+
+        pos.smalltrees <- sample((1:nrow(localgrid))[!1:nrow(localgrid) %in% pos.largetrees], nrow(stand)-sum(largetrees), replace=TRUE)
+
         stand$x.local[!largetrees] <- localgrid[pos.smalltrees, "x.local"]
-        stand$y.local[!largetrees] <- localgrid[pos.smalltrees, "y.local"]   
+        stand$y.local[!largetrees] <- localgrid[pos.smalltrees, "y.local"]
         global <- global_coordinates(stand$x.local, stand$y.local, row=stand$row, col=stand$col, a=25)
         trees[trees$cell==i & is.na(trees$x),"x"] <- global$x
         trees[trees$cell==i & is.na(trees$y),"y"] <- global$y
-        
-      }  
-      
+
+      }
+
     } else {
       ### For empty cells.
     }
@@ -159,14 +159,14 @@ tree_coordinates <- function(file, a=25, biomasslargetrees=10, decade=30, oldtre
 }
 
 
-plot_forest <- function(trees, species,  scol, plotlegend=T, a=25, aspect=1, cex=1){  
+plot_forest <- function(trees, species = unique(trees$species),  scol = rainbow(length(species)), plotlegend=TRUE, a=25, aspect=1, cex=1){
   trees$colors <- scol[match(trees$species, species)]
   plot(y ~ x, trees, pch=16, cex=cex, col=trees$colors, type="p", xlab="", ylab="", asp=aspect)
   if(plotlegend) legend("topright", legend=species, pch=16, col=scol, bg="white")
-}  
+}
 
 
-create_movie <- function(files, decades, a, species,  scol, plotlegend=T, aspect=1, silent=FALSE){
+create_movie <- function(files, decades, a, species,  scol, plotlegend=TRUE, aspect=1, silent=FALSE){
   oldtrees <- tree_coordinates(file=files[1], a=a, decade=decades[1], oldtrees=NULL)
   plot_forest(trees=oldtrees, species=species,  scol=scol, plotlegend=plotlegend, aspect=aspect, cex=sqrt(oldtrees$biomass)/2)
   mtext(paste("Decade = ", decades[1], sep=""), side=3, line=0.5, adj = 0)
@@ -184,14 +184,12 @@ create_movie <- function(files, decades, a, species,  scol, plotlegend=T, aspect
 profound_climate_to_landclim <- function(climate, header, file="climate.txt"){
   temp <- aggregate(climate$tmean_degC, by=list(mo=climate$mo,year= climate$year), mean)
   precip <- aggregate(climate$p_mm, by=list(mo=climate$mo, year=climate$year), sum)
-  
+
   temp <- round(reshape(temp[,c("year", "mo", "x")],  timevar= "mo", idvar="year", direction = "wide"), 2)
   precip <- round(reshape(precip[,c("year", "mo", "x")],  timevar= "mo", idvar="year", direction = "wide"), 0)
-  
+
   climate <- cbind(temp[,grep("x", names(temp))], precip[,grep("x", names(temp))])
-  
+
   writeLines(header, con=file)
-  write.table(climate, file=file, append=TRUE, col.names = FALSE, quote=FALSE)  
+  write.table(climate, file=file, append=TRUE, col.names = FALSE, quote=FALSE)
 }
-
-

@@ -1,13 +1,15 @@
 Package: LandClimTools
 Type: Package
-Title: What the package does (short line)
-Version: 1.0
-Date: 2015-05-11
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
-License: What license is it under?
+Title: Tools for Modelling Landscapes
+Description: Some useful functions to create LandClim input files, analyse and visualize output from the LandClim software by ETH Zurich for modelling landscapes.
+URL: https://www1.ethz.ch/fe/research/disturbance/landclim, https://uwis-server102.ethz.ch/openaccess/software/view/2
+Version: 1.0.0
+Date: 2016-08-08
+Encoding: UTF-8
+Author: Klara Dolos, Caspar Groß
+Maintainer: Klara Dolos <dolos@ifgg.kit.edu>
+License: GPL-3
 Depends:
-  XML,
   raster,
-  sp
+  rgdal,
+  XML
