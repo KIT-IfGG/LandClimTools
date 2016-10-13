@@ -3,7 +3,9 @@ R-Package, created with RStudio.
 
 [Instructions for developers](./DEVELOP.md)
 
-Contact: Klara Dolos (dolos@kit.edu)
+Contact for R-Package LandClimTools: Klara Dolos (dolos@kit.edu)
+
+LandClim is developed and hostet at the ETH Zurich - D-USYS - ITES - Chair of Forest Ecology (Prof. H. Bugmann).
 
 https://www1.ethz.ch/fe/research/disturbance/landclim
 
