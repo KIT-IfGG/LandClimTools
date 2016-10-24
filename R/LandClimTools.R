@@ -78,14 +78,8 @@ plot_elevation_gradient <- function(elevationBiomassOut, species, selection=10, 
 }
 
 read_species_xml <- function(file) {
-  doc <- XML::xmlTreeParse(file)
-  daten <- t(xmlSApply(xmlRoot(doc), function(x) xmlSApply(x, xmlValue)))
-  rownames(daten) <- NULL
-  daten <- data.frame(daten)
-  tmpfile <- file()
-  write.table(daten, tmpfile)
-  daten <- read.table(tmpfile)
-  daten
+  data1 <- XML::xmlParse(file)
+  XML::xmlToDataFrame(nodes=getNodeSet(data1, "//species//set"))
 }
 
 write_species_xml <- function(x, file) {
