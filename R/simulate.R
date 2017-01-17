@@ -1,4 +1,6 @@
 
+lc_path=NULL # assign lc_path a value. Needed to avoid that `R CMD check` complains about "no visible binding for global variable ‘lc_path’"
+
 set_landclim_path <- function(landclim_path){
   if(file.exists(landclim_path)) {
     assign("lc_path", landclim_path, envir=globalenv())
@@ -12,8 +14,8 @@ simulate <- function(control_file){
   oldwd <- getwd()
   setwd(paste(getwd(), "/Input/", sep=""))
   if(file.exists(control_file)) {
-    system(paste(lc_path, control_file, sep=" ")) 
-    
+    system(paste(lc_path, control_file, sep=" "))
+
   } else {
     print("Invalid path to LandClim control file.")
   }
@@ -26,4 +28,3 @@ clean_output_ubuntu <- function(){
   file.remove(fis[grep(c("csv"), fis)])
   file.remove(fis[grep(c("txt"), fis)])
 }
-
