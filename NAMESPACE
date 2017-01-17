@@ -1,2 +1,8 @@
 import(raster, rgdal, XML)
+
+importFrom("graphics", "legend", "matplot", "mtext", "polygon")
+importFrom("grDevices", "rainbow")
+importFrom("stats", "reshape")
+importFrom("utils", "read.csv", "read.table", "write.table")
+
 exportPattern("^[[:alpha:]]+")
