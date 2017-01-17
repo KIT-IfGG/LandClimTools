@@ -1,4 +1,4 @@
-sudo: required
+sudo: false
 dist: trusty
 
 language: r
@@ -20,3 +20,13 @@ before_script:
 
 r_check_args: ""
 warnings_are_errors: false
+
+deploy:
+  provider: releases
+  api_key: "${GH_TOKEN}"
+  file:
+    - "${PKG_TARBALL}"
+    - "LandClimTools.Rcheck/LandClimTools-manual.pdf"
+  skip_cleanup: true
+  on:
+    tags: true
