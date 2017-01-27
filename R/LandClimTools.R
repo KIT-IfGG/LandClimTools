@@ -67,6 +67,16 @@ dbh_to_biomass <- function(dbh, leafHabit, allometry="SCHUMACHER") {
   return(biomass)
 }
 
+
+dbh_to_height <- function(dbh, max_height) {
+  ### Calculation of height of each tree (using the DBH to height equation in Risch et al. 2005 (Ecol. Mod. 181:161-172)
+  s_height <- 80 ### S: parameter denoting initial height growth relative to diameter growth.
+  bh = 137;			 ### Breast  height in cm.
+  height <- (bh + (max_height - bh) * (1 -exp((-s_height * dbh) /(max_height - bh))))/100
+  height
+}
+
+
 calculate_landscape_size <- function(dem){
   return(prod(dim(dem)) * prod(res(dem)) / (100*100))
 }
