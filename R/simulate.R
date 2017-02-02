@@ -10,9 +10,9 @@ set_landclim_path <- function(landclim_path){
 
 simulate <- function(control_file){
   ### Todo: Prototype!
+  oldwd <- getwd()
+  setwd(paste(getwd(), "/Input/", sep=""))
   if(file.exists(control_file)) {
-    oldwd <- getwd()
-    setwd(paste(getwd(), "/Input/", sep=""))
     system(paste(lc_path, control_file, sep=" ")) 
     setwd(oldwd)
   } else {
