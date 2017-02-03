@@ -1,0 +1,32 @@
+sudo: false
+dist: trusty
+
+language: r
+cache: packages
+
+addons:
+  apt:
+    packages:
+      - libxml2-dev
+      - libproj-dev
+      - libgdal-dev
+
+# The following is needed to run the examples with GUI
+before_script:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - sleep 3 # give xvfb some time to start
+
+
+r_check_args: ""
+warnings_are_errors: false
+
+deploy:
+  provider: releases
+  api_key: "${GH_TOKEN}"
+  file:
+    - "${PKG_TARBALL}"
+    - "build/LandClimTools.Rcheck/LandClimTools-manual.pdf"
+  skip_cleanup: true
+  on:
+    tags: true

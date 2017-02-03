@@ -1,4 +1,4 @@
-# LandClimTools
+# LandClimTools [![Build status](https://img.shields.io/travis/KIT-IfGG/LandClimTools/master.svg?style=flat-square)](https://travis-ci.org/KIT-IfGG/LandClimTools)
 R-Package, created with RStudio.
 
 [Instructions for developers](./DEVELOP.md)
