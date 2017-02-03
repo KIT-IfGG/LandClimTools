@@ -9,19 +9,17 @@ set_landclim_path <- function(landclim_path){
     }
 }
 
-
 simulate <- function(control_file){
   ### Todo: Prototype!
   oldwd <- getwd()
   setwd(paste(getwd(), "/Input/", sep=""))
   if(file.exists(control_file)) {
-    system(paste(lc_path, control_file, sep=" "))
-    setwd(oldwd)
+    system(paste(lc_path, control_file, sep=" ")) 
   } else {
     print("Invalid path to LandClim control file.")
   }
+  setwd(oldwd)
 }
-
 
 clean_output_ubuntu <- function(){
   fis <- list.files()
