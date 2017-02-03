@@ -8,19 +8,19 @@
 
 \references{
   Website at ETH Zurich giving an introduction to LandClim:\cr
-  \code{https://www1.ethz.ch/fe/research/disturbance/landclim}
+  \url{https://www1.ethz.ch/fe/research/disturbance/landclim}
 
   Website about the LandClim software:\cr
-  \code{https://uwis-server102.ethz.ch/openaccess/software/view/2}
+  \url{https://uwis-server102.ethz.ch/openaccess/software/view/2}
 
   Style guide for R packages by Hadley Wickham:\cr
-  \code{http://r-pkgs.had.co.nz/style.html}
+  \url{http://r-pkgs.had.co.nz/style.html}
 
-  Schumacher, S., H. Bugmann, and D. J. Mladenoff. 2004. Improving the formulation of tree growth and succession in a spatially explicit landscape model. Ecological Modelling 180:175-194.
+  \href{https://dx.doi.org/10.1016/j.ecolmodel.2003.12.055}{Schumacher, S., H. Bugmann, and D. J. Mladenoff. 2004. Improving the formulation of tree growth and succession in a spatially explicit landscape model. Ecological Modelling 180:175-194.}
 
-  Schumacher, S. and H. Bugmann. 2006. The relative importance of climatic effects, wildfires and management for future forest landscape dynamics in the Swiss Alps. Global Change Biology 12:1435-1450.
+  \href{https://dx.doi.org/10.1111/j.1365-2486.2006.01188.x}{Schumacher, S. and H. Bugmann. 2006. The relative importance of climatic effects, wildfires and management for future forest landscape dynamics in the Swiss Alps. Global Change Biology 12:1435-1450.}
 
-  Schumacher, S., B. Reineking, J. Sibold, and H. Bugmann. 2006. Modeling the impact of climate and vegetation on fire regimes in mountain landscapes. Landscape Ecology 21:539-554.
+  \href{https://dx.doi.org/10.1007/s10980-005-2165-7}{Schumacher, S., B. Reineking, J. Sibold, and H. Bugmann. 2006. Modeling the impact of climate and vegetation on fire regimes in mountain landscapes. Landscape Ecology 21:539-554.}
 }
 
 \keyword{ package }
