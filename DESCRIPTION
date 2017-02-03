@@ -2,7 +2,8 @@ Package: LandClimTools
 Type: Package
 Title: Tools for Modelling Landscapes
 Description: Some useful functions to create LandClim input files, analyse and visualize output from the LandClim software by ETH Zurich for modelling landscapes.
-URL: https://www1.ethz.ch/fe/research/disturbance/landclim, https://uwis-server102.ethz.ch/openaccess/software/view/2
+URL: https://www1.ethz.ch/fe/research/disturbance/landclim
+  https://uwis-server102.ethz.ch/openaccess/software/view/2
 Version: 1.0.0
 Date: 2016-08-08
 Encoding: UTF-8
