@@ -7,7 +7,6 @@ set_landclim_path <- function(landclim_path){
     }
 }
 
-
 simulate <- function(control_file){
   ### Todo: Prototype!
   oldwd <- getwd()
@@ -20,7 +19,6 @@ simulate <- function(control_file){
   }
   setwd(oldwd)
 }
-
 
 clean_output_ubuntu <- function(){
   fis <- list.files()
