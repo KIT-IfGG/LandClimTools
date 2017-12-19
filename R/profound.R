@@ -1,4 +1,6 @@
 profound_climate_to_landclim <- function(climate, header, file="climate.txt"){
+  ### Function related to the profound database created in cost action profound 2017. Contact Chr. Reyer, F. Hartig
+  ### for access.
   temp <- aggregate(climate$tmean_degC, by=list(mo=climate$mo,year= climate$year), mean)
   precip <- aggregate(climate$p_mm, by=list(mo=climate$mo, year=climate$year), sum)
   
