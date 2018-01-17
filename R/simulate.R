@@ -26,7 +26,8 @@ simulate <- function(control_file){
 run_landclim <- function(control_file = "control.xml") {
   print("Works only for Ubuntu until now!")
   print("Working directory must be at the site level.")
-  if (file.exists(paste0("Input/", control_file, sep = "")) & file.exists(lc_path)) {
+  
+  if (file.exists(paste0("Input/", control_file, sep = "")) & isTRUE(file.exists(lc_path))) {
     oldwd <- getwd()
     dir.create("Output")
     file.remove(list.files("Output", full=TRUE))
