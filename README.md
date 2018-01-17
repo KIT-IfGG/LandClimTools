@@ -23,3 +23,5 @@ library(devtools)
 install_github("KIT-IfGG/LandClimTools")
 ```
 
+# Infos
+There is another R-Package for LandClim users: https://gitlab.irstea.fr/austin.haffenden/landclimSetup
