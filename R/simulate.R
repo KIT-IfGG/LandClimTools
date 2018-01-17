@@ -27,7 +27,7 @@ run_landclim <- function(control_file = "control.xml") {
   print("Works only for Ubuntu until now!")
   print("Working directory must be at the site level.")
   
-  #if (file.exists(paste0("Input/", control_file, sep = "")) & file.exists(lc_path)) {
+  if (file.exists(paste0("Input/", control_file, sep = "")) & file.exists(lc_path)) {
     oldwd <- getwd()
     dir.create("Output")
     file.remove(list.files("Output", full=TRUE))
@@ -35,14 +35,13 @@ run_landclim <- function(control_file = "control.xml") {
     system(paste0(lc_path, " ", control_file))
     setwd(oldwd)
     clean_output_ubuntu()
-  #}
-  # else {
-  #   print("Invalid path to LandClim executable or to control file.")
-  #   print(paste0("Landclim path: ", lc_path))
-  #   print(paste0("Control file: ", paste(getwd(), "/Input/", control_file, sep = "")))
-  #   print(paste0("Names of *INPUT* and *OUTPUT* folders in the control file unfortunately must be Input and Output:"))
-  #   print(list.files())
-  # }
+  } else {
+    print("Invalid path to LandClim executable or to control file.")
+    print(paste0("Landclim path: ", lc_path))
+    print(paste0("Control file: ", paste(getwd(), "/Input/", control_file, sep = "")))
+    print(paste0("Names of *INPUT* and *OUTPUT* folders in the control file unfortunately must be Input and Output:"))
+    print(list.files())
+  }
 }
 
 
