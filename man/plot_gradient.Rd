@@ -1,6 +1,5 @@
 \name{plot_gradient}
 \alias{plot_gradient}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Gradient plot
 }
