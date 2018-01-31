@@ -82,6 +82,7 @@ calculate_landscape_size <- function(dem){
 }
 
 plot_elevation_gradient <- function(elevationBiomassOut, species, selection=10,   lty=1,  cols= rainbow(length(species)), plotlegend=TRUE){
+  print("This is an old function. Use plot_gradient instead.")
   a <-elevationBiomassOut$decade==selection
   matplot(elevationBiomassOut$elevation[a], elevationBiomassOut[a,colnames(elevationBiomassOut) %in% species], type="l", lty=lty, col=cols, xlab="Elevation (m a.s.l.)", ylab="Biomass (t/ha)")
   if(plotlegend) legend("topright", legend=species, lty=lty, col=cols, bg="white")

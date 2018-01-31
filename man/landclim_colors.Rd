@@ -13,7 +13,7 @@ landclim_colors(n)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{n}{
-%%     ~~Describe \code{n} here~~
+Number of different tree species = number of colors.
 }
 }
 \details{

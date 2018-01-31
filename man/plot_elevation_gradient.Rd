@@ -6,7 +6,7 @@
 Plot elevation gradient
 }
 \description{
-Create standart figure for elevation gradient for selected decade based on elevation aggregated LandClim output file.
+Create figure for elevation gradient for selected decade based on elevation aggregated LandClim output file.
 }
 \usage{
 plot_elevation_gradient(elevationBiomassOut, species, selection = 10, lty = 1, cols = rainbow(length(species)), plotlegend = TRUE)

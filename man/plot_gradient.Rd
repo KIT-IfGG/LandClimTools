@@ -19,7 +19,7 @@ x values, either elevation or decades from e.g. elevation output.
 y values as matrix. Species columns from e.g. elevation output. 
 }
   \item{col}{
-Color vector of length ncol(y).
+Color vector of length ncol(y). Use e.g. landclim_colors().
 }
   \item{\dots}{
 Additional arguments for function plot().
@@ -52,20 +52,18 @@ Additional arguments for function plot().
 }
 \examples{
 
-## The function is currently defined as
-function (x, y, col = NULL, ...) 
-{
-    y <- t(apply(y, 1, cumsum))
-    if (is.null(col)) 
-        col <- rainbow(ncol(y))
-    x.poly <- c(x, rev(x))
-    y <- cbind(null = rep(0, length(x)), y)
-    plot(y[, ncol(y)] ~ x, type = "n", ...)
-    for (i in 2:ncol(y)) {
-        y.poly <- c(y[, i - 1], rev(y[, i]))
-        polygon(x.poly, y.poly, col = col[i - 1])
-    }
-  }
+dat <- read.table(system.file("elevation_biomass_out.csv", package = "LandClimTools"), sep = ",", dec = ".", header = TRUE)
+
+species <- c("abiealba" , "piceabie", "fagusilv", "pinusilv", "querpetr")
+
+plot_gradient(dat$decade[dat$elevation==823], dat[dat$elevation==823, c(species)], col=landclim_colors(length(species)), xlab="Decade", ylab="Biomass", ylim=c(0,400))
+legend("topleft", legend = species, col = landclim_colors(length(species)), pch=15, pt.cex=2)
+
+plot_gradient(dat$elevation[dat$decade==50], dat[dat$decade==50, c(species)], xlab="Elevation", ylab="Biomass", col=landclim_colors(length(species)), ylim=c(0,400))
+legend("topleft", legend = species, col = landclim_colors(length(species)), pch=15, pt.cex=2)
+
+
+
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
