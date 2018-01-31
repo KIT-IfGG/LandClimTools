@@ -221,16 +221,19 @@ the value converted to biomass
  dbh_to_biomass(dbh=dat, leafHabit="DECIDUOUS", allometry = "SCHUMACHER")
  ``` 
 
-# `global_coordinates`: Convert local coordinates to global ones
+# `global_coordinates`: Convert local to global coordinates
 
 ## Description
 
-takes local coordinates, the numbers of rows/columns and the width/height of each part of the grid. From that the global coordinates are calculated
+
+ Takes local coordinates, the numbers of rows/columns and the width/height of each part of the grid. From that the global coordinates are calculated
+
 
 ## Usage
 
 ```r
-global_coordinates(x.local, y.local, row, col, a)```
+global_coordinates(x.local, y.local, row, col, a)
+```
 
 
 ## Arguments
@@ -245,7 +248,7 @@ Argument      |Description
 
 ## Value
 
-the calculated global coordinates
+Global coordinates data frame
 
 # `landclim_colors`: 
  LandClim color palette
@@ -254,7 +257,7 @@ the calculated global coordinates
 ## Description
 
 
- %%  ~~ A concise (1-5 lines) description of what the function does. ~~ 
+ Create a color vector for plotting.
 
 
 ## Usage
@@ -270,20 +273,10 @@ Argument      |Description
 ------------- |----------------
 ```n```     |      Number of different tree species = number of colors.
 
-## Details
-
-
- %%  ~~ If necessary, more details than the description above ~~ 
-
-
 ## Value
 
 
- %%  ~Describe the value returned 
- %%  If it is a LIST, use 
- %%  \item{comp1 }{Description of 'comp1'} 
- %%  \item{comp2 }{Description of 'comp2'} 
- %% ... 
+ Character vector with colors.
 
 
 ## Note
@@ -296,12 +289,6 @@ Argument      |Description
 
 
  Klara Dolos
-
-
-## References
-
-
- %% ~put references to the literature/web site here ~ 
 
 
 ## Examples

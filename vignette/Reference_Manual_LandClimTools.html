@@ -388,15 +388,15 @@ $(document).ready(function () {
 <p><code>r   dat &lt;- rnorm(10, 20, 5)  dbh_to_biomass(dbh=dat, leafHabit=&quot;DECIDUOUS&quot;, allometry = &quot;SCHUMACHER&quot;)</code></p>
 </div>
 </div>
-<div id="global_coordinates-convert-local-coordinates-to-global-ones" class="section level1">
-<h1><code>global_coordinates</code>: Convert local coordinates to global ones</h1>
+<div id="global_coordinates-convert-local-to-global-coordinates" class="section level1">
+<h1><code>global_coordinates</code>: Convert local to global coordinates</h1>
 <div id="description-6" class="section level2">
 <h2>Description</h2>
-<p>takes local coordinates, the numbers of rows/columns and the width/height of each part of the grid. From that the global coordinates are calculated</p>
+<p>Takes local coordinates, the numbers of rows/columns and the width/height of each part of the grid. From that the global coordinates are calculated</p>
 </div>
 <div id="usage-5" class="section level2">
 <h2>Usage</h2>
-<p><code>r global_coordinates(x.local, y.local, row, col, a)</code></p>
+<pre class="r"><code>global_coordinates(x.local, y.local, row, col, a)</code></pre>
 </div>
 <div id="arguments-5" class="section level2">
 <h2>Arguments</h2>
@@ -433,7 +433,7 @@ $(document).ready(function () {
 </div>
 <div id="value-3" class="section level2">
 <h2>Value</h2>
-<p>the calculated global coordinates</p>
+<p>Global coordinates data frame</p>
 </div>
 </div>
 <div id="landclim_colors" class="section level1">
@@ -441,7 +441,7 @@ $(document).ready(function () {
 <p>LandClim color palette</p>
 <div id="description-7" class="section level2">
 <h2>Description</h2>
-<p>%% ~~ A concise (1-5 lines) description of what the function does. ~~</p>
+<p>Create a color vector for plotting.</p>
 </div>
 <div id="usage-6" class="section level2">
 <h2>Usage</h2>
@@ -464,13 +464,9 @@ $(document).ready(function () {
 </tbody>
 </table>
 </div>
-<div id="details" class="section level2">
-<h2>Details</h2>
-<p>%% ~~ If necessary, more details than the description above ~~</p>
-</div>
 <div id="value-4" class="section level2">
 <h2>Value</h2>
-<p>%% ~Describe the value returned %% If it is a LIST, use %% {comp1 }{Description of ‘comp1’} %% {comp2 }{Description of ‘comp2’} %% …</p>
+<p>Character vector with colors.</p>
 </div>
 <div id="note" class="section level2">
 <h2>Note</h2>
@@ -479,10 +475,6 @@ $(document).ready(function () {
 <div id="author-1" class="section level2">
 <h2>Author</h2>
 <p>Klara Dolos</p>
-</div>
-<div id="references" class="section level2">
-<h2>References</h2>
-<p>%% ~put references to the literature/web site here ~</p>
 </div>
 <div id="examples-5" class="section level2">
 <h2>Examples</h2>
@@ -497,7 +489,7 @@ $(document).ready(function () {
 <h2>Description</h2>
 <p>The LandClimTools package contains several useful functions for working with the LandClim software</p>
 </div>
-<div id="references-1" class="section level2">
+<div id="references" class="section level2">
 <h2>References</h2>
 <p>Website at ETH Zurich giving an introduction to LandClim: list() <a href="https://www1.ethz.ch/fe/research/disturbance/landclim" class="uri">https://www1.ethz.ch/fe/research/disturbance/landclim</a></p>
 <p>Website about the LandClim software: list() <a href="https://uwis-server102.ethz.ch/openaccess/software/view/2" class="uri">https://uwis-server102.ethz.ch/openaccess/software/view/2</a></p>
@@ -687,7 +679,7 @@ $(document).ready(function () {
 </tbody>
 </table>
 </div>
-<div id="details-1" class="section level2">
+<div id="details" class="section level2">
 <h2>Details</h2>
 <p>%% ~~ If necessary, more details than the description above ~~</p>
 </div>
@@ -707,7 +699,7 @@ $(document).ready(function () {
 <h2>Author</h2>
 <p>Klara Dolos</p>
 </div>
-<div id="references-2" class="section level2">
+<div id="references-1" class="section level2">
 <h2>References</h2>
 <p>%% ~put references to the literature/web site here ~</p>
 </div>
@@ -745,7 +737,7 @@ $(document).ready(function () {
 </tbody>
 </table>
 </div>
-<div id="details-2" class="section level2">
+<div id="details-1" class="section level2">
 <h2>Details</h2>
 <p>%% ~~ If necessary, more details than the description above ~~</p>
 </div>
@@ -761,7 +753,7 @@ $(document).ready(function () {
 <h2>Author</h2>
 <p>Björn Reineking</p>
 </div>
-<div id="references-3" class="section level2">
+<div id="references-2" class="section level2">
 <h2>References</h2>
 <p>%% ~put references to the literature/web site here ~</p>
 </div>
@@ -855,7 +847,7 @@ $(document).ready(function () {
 </tbody>
 </table>
 </div>
-<div id="details-3" class="section level2">
+<div id="details-2" class="section level2">
 <h2>Details</h2>
 <p>The working directory needs to be set to the level above “Input” and “Output” folders of LandClim, thus at the “site” level. Until now, the folder names are hard-coded, thus need to be “Input” and “Output”, not e.g. input! Feel free to fix this!</p>
 </div>
@@ -875,7 +867,7 @@ $(document).ready(function () {
 <h2>Author</h2>
 <p>Klara Dolos</p>
 </div>
-<div id="references-4" class="section level2">
+<div id="references-3" class="section level2">
 <h2>References</h2>
 <p>%% ~put references to the literature/web site here ~</p>
 </div>
@@ -949,7 +941,7 @@ $(document).ready(function () {
 <h2>Author</h2>
 <p>Klara Dolos</p>
 </div>
-<div id="references-5" class="section level2">
+<div id="references-4" class="section level2">
 <h2>References</h2>
 <p>%% ~put references to the literature/web site here ~</p>
 </div>
@@ -1000,7 +992,7 @@ $(document).ready(function () {
 </tbody>
 </table>
 </div>
-<div id="details-4" class="section level2">
+<div id="details-3" class="section level2">
 <h2>Details</h2>
 <p>%% ~~ If necessary, more details than the description above ~~</p>
 </div>
@@ -1020,7 +1012,7 @@ $(document).ready(function () {
 <h2>Author</h2>
 <p>%% <del>who you are</del></p>
 </div>
-<div id="references-6" class="section level2">
+<div id="references-5" class="section level2">
 <h2>References</h2>
 <p>%% ~put references to the literature/web site here ~</p>
 </div>
