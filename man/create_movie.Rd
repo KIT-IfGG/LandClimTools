@@ -1,14 +1,13 @@
 \name{create_movie}
 \alias{create_movie}
-%- Also NEED an '\alias' for EACH other topic documented here.
+
 \title{Create succession movie}
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Creates a sequence of figures of the forest state from above displayed as a "movie".
 }
 \usage{
   create_movie(files, decades, a, species,  scol, plotlegend=TRUE, aspect=1, silent=FALSE)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{files}{
     LandClim decade output "fullOut10" etc. One file per time step for the movie.

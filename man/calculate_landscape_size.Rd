@@ -10,13 +10,10 @@
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{dem}{
-    %%     ~~Describe \code{dem} here~~
+    Path to digital elevation model file (e.g. dem.asc) in the simulation input folder.
   }
 }
 \value{the calculated landscape size}
 \examples{
-  ## The function is currently defined as
-  function(dem){
-    return(prod(dim(dem)) * prod(res(dem)) / (100*100))
-  }
+ ## calculate_landscape_size(dem="simulations/input/dem.asc")
 }
