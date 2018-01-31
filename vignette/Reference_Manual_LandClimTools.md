@@ -1,8 +1,3 @@
----
-output: 
-  html_notebook: 
-    toc: yes
----
 
 
 <!-- toc -->
@@ -29,104 +24,6 @@ Depends:
   rgdal,
   XML```
 
-
-# `LandClimTools-package`: Package documentation for LandClimTools
-
-## Description
-
-The LandClimTools package contains several useful functions for working with the LandClim software
-
-## References
-
-
- Website at ETH Zurich giving an introduction to LandClim: list() 
-  [https://www1.ethz.ch/fe/research/disturbance/landclim](https://www1.ethz.ch/fe/research/disturbance/landclim) 
- 
- Website about the LandClim software: list() 
-  [https://uwis-server102.ethz.ch/openaccess/software/view/2](https://uwis-server102.ethz.ch/openaccess/software/view/2) 
- 
- Style guide for R packages by Hadley Wickham: list() 
-  [http://r-pkgs.had.co.nz/style.html](http://r-pkgs.had.co.nz/style.html) 
- 
-  [Schumacher, S., H. Bugmann, and D. J. Mladenoff. 2004. Improving the formulation of tree growth and succession in a spatially explicit landscape model. Ecological Modelling 180:175-194.](https://dx.doi.org/10.1016/j.ecolmodel.2003.12.055) 
- 
-  [Schumacher, S. and H. Bugmann. 2006. The relative importance of climatic effects, wildfires and management for future forest landscape dynamics in the Swiss Alps. Global Change Biology 12:1435-1450.](https://dx.doi.org/10.1111/j.1365-2486.2006.01188.x) 
- 
-  [Schumacher, S., B. Reineking, J. Sibold, and H. Bugmann. 2006. Modeling the impact of climate and vegetation on fire regimes in mountain landscapes. Landscape Ecology 21:539-554.](https://dx.doi.org/10.1007/s10980-005-2165-7) 
-
-
-## Examples
-
-```r 
- library(LandClimTools)
- 
- ###############################################################
- ### Create and write LandClim maps ####
- library(raster)
- gk_projection<-CRS("+init=epsg:31467")
- nr <-50
- nc <- 50
- res <- 40
- ex <- extent(0, nc*res, 0, nr*res)
- dem <- raster(nrows=nr, ncols=nc, ex)
- projection(dem) <- gk_projection
- dem
- dem[] <- rep(seq(400, 2200,len=nr), each=nc)
- x11()
- plot(dem)
- 
- ### Create LandClim map "slope".
- slope <- dem
- slope[]<- 0
- 
- ###  LandClim map "soil".
- soil <- dem
- soil[] <- 20
- soil  ### Check min, max values
- 
- ###  LandClim map "landtype".
- landtype <- slope
- landtype[] <- 1
- 
- ### Aspect
- aspect <- slope
- aspect[] <- 0
- 
- ###  LandClim map "nitrogen".
- nitro <- slope
- nitro[] <- 1
- 
- ### Create raster-stack
- maps <- stack(dem, slope, aspect, soil, landtype, nitro)
- names(maps) <- c("dem", "slope", "aspect", "soil", "landtype", "nitro")
- x11()
- plot(maps)
- 
- maps25 <- resample_landclim_maps(landClimRasterStack=maps)
- res(maps25$dem)
- 
- ### Write as LandClim files.
- write_landclim_maps(landClimRasterStack=maps25, nodata_value="-9999", lcResolution=25)
- 
- ################################################################### Plot LandClim output ####
- ### Elevation gradient
- dat <- read.table(system.file("elevation_biomass_out.csv", package = "LandClimTools"), sep=",", dec=".", header=TRUE)
- species <- c("abiealba" , "piceabie", "fagusylv", "pinusilv", "querpetr")
- x11()
- plot_elevation_gradient(elevationBiomassOut=dat, species=species, selection=30, lty=1,  cols= rainbow(length(species)))
- 
- ### LandClim forest
- trees <- tree_coordinates(file=system.file("fullOut_50.csv", package = "LandClimTools"), a=25)
- 
- stand <- trees[trees$row > 20 & trees$row <=40,]
- stand$row <- stand$row - min(stand$row)
- stand <- trees[trees$col > 20 & trees$col <=40,]
- stand$col <- stand$col - min(stand$col)
- 
- x11(width=7, height=7)
- par(mar=c(2,2,1,1))
- plot_forest(trees=stand, species=unique(stand$species),  scol=rainbow(length(unique(stand$species))), plotlegend=TRUE, aspect=1, cex=sqrt(stand$biomass)/2)
- ``` 
 
 # `biomass_to_dbh`: LandClim allomentry for biomass to DBH conversion.
 
@@ -418,6 +315,104 @@ Argument      |Description
  
  ``` 
 
+# `LandClimTools-package`: Package documentation for LandClimTools
+
+## Description
+
+The LandClimTools package contains several useful functions for working with the LandClim software
+
+## References
+
+
+ Website at ETH Zurich giving an introduction to LandClim: list() 
+  [https://www1.ethz.ch/fe/research/disturbance/landclim](https://www1.ethz.ch/fe/research/disturbance/landclim) 
+ 
+ Website about the LandClim software: list() 
+  [https://uwis-server102.ethz.ch/openaccess/software/view/2](https://uwis-server102.ethz.ch/openaccess/software/view/2) 
+ 
+ Style guide for R packages by Hadley Wickham: list() 
+  [http://r-pkgs.had.co.nz/style.html](http://r-pkgs.had.co.nz/style.html) 
+ 
+  [Schumacher, S., H. Bugmann, and D. J. Mladenoff. 2004. Improving the formulation of tree growth and succession in a spatially explicit landscape model. Ecological Modelling 180:175-194.](https://dx.doi.org/10.1016/j.ecolmodel.2003.12.055) 
+ 
+  [Schumacher, S. and H. Bugmann. 2006. The relative importance of climatic effects, wildfires and management for future forest landscape dynamics in the Swiss Alps. Global Change Biology 12:1435-1450.](https://dx.doi.org/10.1111/j.1365-2486.2006.01188.x) 
+ 
+  [Schumacher, S., B. Reineking, J. Sibold, and H. Bugmann. 2006. Modeling the impact of climate and vegetation on fire regimes in mountain landscapes. Landscape Ecology 21:539-554.](https://dx.doi.org/10.1007/s10980-005-2165-7) 
+
+
+## Examples
+
+```r 
+ library(LandClimTools)
+ 
+ ###############################################################
+ ### Create and write LandClim maps ####
+ library(raster)
+ gk_projection<-CRS("+init=epsg:31467")
+ nr <-50
+ nc <- 50
+ res <- 40
+ ex <- extent(0, nc*res, 0, nr*res)
+ dem <- raster(nrows=nr, ncols=nc, ex)
+ projection(dem) <- gk_projection
+ dem
+ dem[] <- rep(seq(400, 2200,len=nr), each=nc)
+ x11()
+ plot(dem)
+ 
+ ### Create LandClim map "slope".
+ slope <- dem
+ slope[]<- 0
+ 
+ ###  LandClim map "soil".
+ soil <- dem
+ soil[] <- 20
+ soil  ### Check min, max values
+ 
+ ###  LandClim map "landtype".
+ landtype <- slope
+ landtype[] <- 1
+ 
+ ### Aspect
+ aspect <- slope
+ aspect[] <- 0
+ 
+ ###  LandClim map "nitrogen".
+ nitro <- slope
+ nitro[] <- 1
+ 
+ ### Create raster-stack
+ maps <- stack(dem, slope, aspect, soil, landtype, nitro)
+ names(maps) <- c("dem", "slope", "aspect", "soil", "landtype", "nitro")
+ x11()
+ plot(maps)
+ 
+ maps25 <- resample_landclim_maps(landClimRasterStack=maps)
+ res(maps25$dem)
+ 
+ ### Write as LandClim files.
+ write_landclim_maps(landClimRasterStack=maps25, nodata_value="-9999", lcResolution=25)
+ 
+ ################################################################### Plot LandClim output ####
+ ### Elevation gradient
+ dat <- read.table(system.file("elevation_biomass_out.csv", package = "LandClimTools"), sep=",", dec=".", header=TRUE)
+ species <- c("abiealba" , "piceabie", "fagusylv", "pinusilv", "querpetr")
+ x11()
+ plot_elevation_gradient(elevationBiomassOut=dat, species=species, selection=30, lty=1,  cols= rainbow(length(species)))
+ 
+ ### LandClim forest
+ trees <- tree_coordinates(file=system.file("fullOut_50.csv", package = "LandClimTools"), a=25)
+ 
+ stand <- trees[trees$row > 20 & trees$row <=40,]
+ stand$row <- stand$row - min(stand$row)
+ stand <- trees[trees$col > 20 & trees$col <=40,]
+ stand$col <- stand$col - min(stand$col)
+ 
+ x11(width=7, height=7)
+ par(mar=c(2,2,1,1))
+ plot_forest(trees=stand, species=unique(stand$species),  scol=rainbow(length(unique(stand$species))), plotlegend=TRUE, aspect=1, cex=sqrt(stand$biomass)/2)
+ ``` 
+
 # `plot_elevation_gradient`: 
  %%  ~~function to do ... ~~ 
  Plot elevation gradient
@@ -529,13 +524,13 @@ Argument      |Description
  ``` 
 
 # `plot_gradient`: 
- Plot succession or elevation gradient
+ Gradient plot
 
 
 ## Description
 
 
- %%  ~~ A concise (1-5 lines) description of what the function does. ~~ 
+ Plot succession or elevation gradient based on Landclim decadal output.
 
 
 ## Usage
@@ -554,44 +549,10 @@ Argument      |Description
 ```col```     |      Color vector of length ncol(y). Use e.g. landclim_colors().
 ```list()```     |      Additional arguments for function plot().
 
-## Details
-
-
- %%  ~~ If necessary, more details than the description above ~~ 
-
-
-## Value
-
-
- %%  ~Describe the value returned 
- %%  If it is a LIST, use 
- %%  \item{comp1 }{Description of 'comp1'} 
- %%  \item{comp2 }{Description of 'comp2'} 
- %% ... 
-
-
-## Seealso
-
-
- %% ~~objects to See Also as \code{\link{help}}, ~~~ 
-
-
-## Note
-
-
- %%  ~~further notes~~ 
-
-
 ## Author
 
 
- %%  ~~who you are~~ 
-
-
-## References
-
-
- %% ~put references to the literature/web site here ~ 
+ Klara Dolos
 
 
 ## Examples
@@ -747,20 +708,12 @@ Argument      |Description
 ## Seealso
 
 
- %% ~~objects to See Also as \code{\link{help}}, ~~~ 
  write_species_xml
-
-
-## Note
-
-
- %%  ~~further notes~~ 
 
 
 ## Author
 
 
- %%  ~~who you are~~ 
  Björn Reineking
 
 
@@ -773,24 +726,11 @@ Argument      |Description
 ## Examples
 
 ```r 
- ##---- Should be DIRECTLY executable !! ----
- ##-- ==>  Define data, use random,
- ##--or do  help(data=index)  for the standard data sets.
+ ### Read example species file
+ species_parameters  <- read_species_xml(system.file("species.xml", package = "LandClimTools"))
  
- ## The function is currently defined as
- function (file)
- {
- require(XML)
- doc <- xmlTreeParse(file)
- daten <- t(xmlSApply(xmlRoot(doc), function(x) xmlSApply(x,
- xmlValue)))
- rownames(daten) <- NULL
- daten <- data.frame(daten)
- tmpfile <- file()
- write.table(daten, tmpfile)
- daten <- read.table(tmpfile)
- daten
- }
+ ### Write example species file
+ write_species_xml(x = species_parameters, file = "piceabi.xml")
  ``` 
 
 # `resample_landclim_maps`: Resample LandClim maps
@@ -1115,25 +1055,22 @@ Writes the given data into the given file in the XML-format for species of LandC
 
 Argument      |Description
 ------------- |----------------
-```x```     |       %%     ~~Describe \code{x} here~~  
-```file```     |       %%     ~~Describe \code{file} here~~  
+```x```     |      Data frame with species parameters and tag names. 
+```file```     |      Output file name including full path. 
+
+## Seealso
+
+
+ read_species_xml
+
 
 ## Examples
 
 ```r 
- ## The function is currently defined as
- function (x, file)
- {
- names <- colnames(x)
- suppressWarnings(tr <- xmlTree("species"))
- for (i in 1:NROW(x)) {
- tr$addTag("set", close = FALSE)
- for (j in names) {
- tr$addTag(j, as.character(x[i, j]))
- }
- tr$closeTag()
- }
- invisible(saveXML(tr$value(), file = file))
- }
+ ### Read example species file
+ species_parameters  <- read_species_xml(system.file("species.xml", package = "LandClimTools"))
+ 
+ ### Write example species file
+ write_species_xml(x = species_parameters, file = "piceabie.xml")
  ``` 
 
