@@ -1,5 +1,7 @@
 ---
-output: html_notebook
+output: 
+  html_notebook: 
+    toc: yes
 ---
 
 

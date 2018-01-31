@@ -9,26 +9,21 @@
 
 \arguments{
   \item{x}{
-    %%     ~~Describe \code{x} here~~
+    Data frame with species parameters and tag names.
   }
   \item{file}{
-    %%     ~~Describe \code{file} here~~
+    Output file name including full path.
   }
 }
 
+\seealso{
+read_species_xml
+}
+
 \examples{
-## The function is currently defined as
-function (x, file)
-{
-    names <- colnames(x)
-    suppressWarnings(tr <- xmlTree("species"))
-    for (i in 1:NROW(x)) {
-        tr$addTag("set", close = FALSE)
-        for (j in names) {
-            tr$addTag(j, as.character(x[i, j]))
-        }
-        tr$closeTag()
-    }
-    invisible(saveXML(tr$value(), file = file))
-  }
+  ### Read example species file
+  species_parameters  <- read_species_xml(system.file("species.xml", package = "LandClimTools"))
+  
+  ### Write example species file
+  write_species_xml(x = species_parameters, file = "piceabie.xml")
 }

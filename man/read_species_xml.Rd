@@ -34,38 +34,18 @@ Data frame with one row for each species.
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
 Björn Reineking
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
 write_species_xml
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (file) 
-{
-    require(XML)
-    doc <- xmlTreeParse(file)
-    daten <- t(xmlSApply(xmlRoot(doc), function(x) xmlSApply(x, 
-        xmlValue)))
-    rownames(daten) <- NULL
-    daten <- data.frame(daten)
-    tmpfile <- file()
-    write.table(daten, tmpfile)
-    daten <- read.table(tmpfile)
-    daten
-  }
+  ### Read example species file
+  species_parameters  <- read_species_xml(system.file("species.xml", package = "LandClimTools"))
+  
+  ### Write example species file
+  write_species_xml(x = species_parameters, file = "piceabi.xml")
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
