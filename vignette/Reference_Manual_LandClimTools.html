@@ -524,79 +524,17 @@ $(document).ready(function () {
 <p>x11(width=7, height=7) par(mar=c(2,2,1,1)) plot_forest(trees=stand, species=unique(stand<span class="math inline">\(species), scol=rainbow(length(unique(stand\)</span>species))), plotlegend=TRUE, aspect=1, cex=sqrt(stand$biomass)/2) ```</p>
 </div>
 </div>
-<div id="plot_elevation_gradient" class="section level1">
-<h1><code>plot_elevation_gradient</code>:</h1>
-<p>%% ~~function to do … ~~ Plot elevation gradient</p>
-<div id="description-9" class="section level2">
-<h2>Description</h2>
-<p>Create figure for elevation gradient for selected decade based on elevation aggregated LandClim output file.</p>
-</div>
-<div id="usage-7" class="section level2">
-<h2>Usage</h2>
-<pre class="r"><code>plot_elevation_gradient(elevationBiomassOut, species, selection = 10, lty = 1, cols = rainbow(length(species)), plotlegend = TRUE)</code></pre>
-</div>
-<div id="arguments-7" class="section level2">
-<h2>Arguments</h2>
-<table>
-<thead>
-<tr class="header">
-<th>Argument</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>elevationBiomassOut</code></td>
-<td>%% <del>Describe  here</del></td>
-</tr>
-<tr class="even">
-<td><code>species</code></td>
-<td>%% <del>Describe  here</del></td>
-</tr>
-<tr class="odd">
-<td><code>selection</code></td>
-<td>%% <del>Describe  here</del></td>
-</tr>
-<tr class="even">
-<td><code>lty</code></td>
-<td>%% <del>Describe  here</del></td>
-</tr>
-<tr class="odd">
-<td><code>cols</code></td>
-<td>%% <del>Describe  here</del></td>
-</tr>
-<tr class="even">
-<td><code>plotlegend</code></td>
-<td>%% <del>Describe  here</del></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="value-5" class="section level2">
-<h2>Value</h2>
-<p>%% ~Describe the value returned %% If it is a LIST, use %% {comp1 }{Description of ‘comp1’} %% {comp2 }{Description of ‘comp2’} %% …</p>
-</div>
-<div id="seealso-2" class="section level2">
-<h2>Seealso</h2>
-<p><a href="plot_forest.html"><code>plot_forest</code></a></p>
-</div>
-<div id="examples-7" class="section level2">
-<h2>Examples</h2>
-<p>```r dat &lt;- read.table(system.file(“elevation_biomass_out.csv”, package = “LandClimTools”), sep=“,”, dec=“.”, header=TRUE)</p>
-<p>species &lt;- c(“abiealba” , “piceabie”, “fagusylv”, “pinusilv”, “querpetr”) plot_elevation_gradient(elevationBiomassOut=dat, species=species, selection=30, lty=1, cols= rainbow(length(species))) ```</p>
-</div>
-</div>
 <div id="plot_forest-plot-landclim-forest" class="section level1">
 <h1><code>plot_forest</code>: Plot LandClim forest</h1>
-<div id="description-10" class="section level2">
+<div id="description-9" class="section level2">
 <h2>Description</h2>
 <p>Plots a forest based on tree data from LandClim</p>
 </div>
-<div id="usage-8" class="section level2">
+<div id="usage-7" class="section level2">
 <h2>Usage</h2>
 <pre class="r"><code>  plot_forest(trees, species = unique(trees$species), scol = rainbow(length(species)), plotlegend = TRUE, a = 25, aspect = 1, cex = 1)</code></pre>
 </div>
-<div id="arguments-8" class="section level2">
+<div id="arguments-7" class="section level2">
 <h2>Arguments</h2>
 <table>
 <thead>
@@ -637,7 +575,7 @@ $(document).ready(function () {
 </tbody>
 </table>
 </div>
-<div id="seealso-3" class="section level2">
+<div id="seealso-2" class="section level2">
 <h2>Seealso</h2>
 <p><a href="tree_coordinates.html"><code>tree_coordinates</code></a></p>
 </div>
@@ -645,7 +583,7 @@ $(document).ready(function () {
 <h2>Author</h2>
 <p>Klara Dolos</p>
 </div>
-<div id="examples-8" class="section level2">
+<div id="examples-7" class="section level2">
 <h2>Examples</h2>
 <p>```r</p>
 <p>trees &lt;- tree_coordinates(file=system.file(“fullOut_50.csv”, package = “LandClimTools”), a=25)</p>
@@ -658,15 +596,15 @@ $(document).ready(function () {
 <div id="plot_gradient" class="section level1">
 <h1><code>plot_gradient</code>:</h1>
 <p>Gradient plot</p>
-<div id="description-11" class="section level2">
+<div id="description-10" class="section level2">
 <h2>Description</h2>
 <p>Plot succession or elevation gradient based on Landclim decadal output.</p>
 </div>
-<div id="usage-9" class="section level2">
+<div id="usage-8" class="section level2">
 <h2>Usage</h2>
 <pre class="r"><code>plot_gradient(x, y, col = NULL, ...)</code></pre>
 </div>
-<div id="arguments-9" class="section level2">
+<div id="arguments-8" class="section level2">
 <h2>Arguments</h2>
 <table>
 <thead>
@@ -699,7 +637,7 @@ $(document).ready(function () {
 <h2>Author</h2>
 <p>Klara Dolos</p>
 </div>
-<div id="examples-9" class="section level2">
+<div id="examples-8" class="section level2">
 <h2>Examples</h2>
 <p>```r</p>
 <p>dat &lt;- read.table(system.file(“elevation_biomass_out.csv”, package = “LandClimTools”), sep = “,”, dec = “.”, header = TRUE)</p>
@@ -712,15 +650,15 @@ $(document).ready(function () {
 <div id="profound_climate_to_landclim" class="section level1">
 <h1><code>profound_climate_to_landclim</code>:</h1>
 <p>Complile climate from Profound database</p>
-<div id="description-12" class="section level2">
+<div id="description-11" class="section level2">
 <h2>Description</h2>
 <p>%% ~~ A concise (1-5 lines) description of what the function does. ~~</p>
 </div>
-<div id="usage-10" class="section level2">
+<div id="usage-9" class="section level2">
 <h2>Usage</h2>
 <pre class="r"><code>profound_climate_to_landclim(climate, header, file = &quot;climate.txt&quot;)</code></pre>
 </div>
-<div id="arguments-10" class="section level2">
+<div id="arguments-9" class="section level2">
 <h2>Arguments</h2>
 <table style="width:43%;">
 <colgroup>
@@ -753,11 +691,11 @@ $(document).ready(function () {
 <h2>Details</h2>
 <p>%% ~~ If necessary, more details than the description above ~~</p>
 </div>
-<div id="value-6" class="section level2">
+<div id="value-5" class="section level2">
 <h2>Value</h2>
 <p>%% ~Describe the value returned %% If it is a LIST, use %% {comp1 }{Description of ‘comp1’} %% {comp2 }{Description of ‘comp2’} %% …</p>
 </div>
-<div id="seealso-4" class="section level2">
+<div id="seealso-3" class="section level2">
 <h2>Seealso</h2>
 <p>%% ~~objects to See Also as , <sub>~</sub></p>
 </div>
@@ -773,7 +711,7 @@ $(document).ready(function () {
 <h2>References</h2>
 <p>%% ~put references to the literature/web site here ~</p>
 </div>
-<div id="examples-10" class="section level2">
+<div id="examples-9" class="section level2">
 <h2>Examples</h2>
 <p>```r ##—- Should be DIRECTLY executable !! —- ##– ==&gt; Define data, use random, ##–or do help(data=index) for the standard data sets.</p>
 <p>## The function is currently defined as function (climate, header, file = “climate.txt”) { temp &lt;- aggregate(climate<span class="math inline">\(tmean_degC, by = list(mo = climate\)</span>mo, year = climate<span class="math inline">\(year), mean)  precip &lt;- aggregate(climate\)</span>p_mm, by = list(mo = climate<span class="math inline">\(mo,  year = climate\)</span>year), sum) temp &lt;- round(reshape(temp[, c(“year”, “mo”, “x”)], timevar = “mo”, idvar = “year”, direction = “wide”), 2) precip &lt;- round(reshape(precip[, c(“year”, “mo”, “x”)], timevar = “mo”, idvar = “year”, direction = “wide”), 0) climate &lt;- cbind(temp[, grep(“x”, names(temp))], precip[, grep(“x”, names(temp))]) writeLines(header, con = file) write.table(climate, file = file, append = TRUE, col.names = FALSE) } ```</p>
@@ -782,15 +720,15 @@ $(document).ready(function () {
 <div id="read_species_xml" class="section level1">
 <h1><code>read_species_xml</code>:</h1>
 <p>%% ~~function to do … ~~ Read LandClim species parameters.</p>
-<div id="description-13" class="section level2">
+<div id="description-12" class="section level2">
 <h2>Description</h2>
 <p>%% ~~ A concise (1-5 lines) description of what the function does. ~~ Read LandClim species parameters from input file.(species.xml).</p>
 </div>
-<div id="usage-11" class="section level2">
+<div id="usage-10" class="section level2">
 <h2>Usage</h2>
 <pre class="r"><code>read_species_xml(file)</code></pre>
 </div>
-<div id="arguments-11" class="section level2">
+<div id="arguments-10" class="section level2">
 <h2>Arguments</h2>
 <table>
 <thead>
@@ -811,11 +749,11 @@ $(document).ready(function () {
 <h2>Details</h2>
 <p>%% ~~ If necessary, more details than the description above ~~</p>
 </div>
-<div id="value-7" class="section level2">
+<div id="value-6" class="section level2">
 <h2>Value</h2>
 <p>%% ~Describe the value returned %% If it is a LIST, use %% {comp1 }{Description of ‘comp1’} %% {comp2 }{Description of ‘comp2’} %% … Data frame with one row for each species.</p>
 </div>
-<div id="seealso-5" class="section level2">
+<div id="seealso-4" class="section level2">
 <h2>Seealso</h2>
 <p>write_species_xml</p>
 </div>
@@ -827,7 +765,7 @@ $(document).ready(function () {
 <h2>References</h2>
 <p>%% ~put references to the literature/web site here ~</p>
 </div>
-<div id="examples-11" class="section level2">
+<div id="examples-10" class="section level2">
 <h2>Examples</h2>
 <p>```r ### Read example species file species_parameters &lt;- read_species_xml(system.file(“species.xml”, package = “LandClimTools”))</p>
 <p>### Write example species file write_species_xml(x = species_parameters, file = “piceabi.xml”) ```</p>
@@ -835,15 +773,15 @@ $(document).ready(function () {
 </div>
 <div id="resample_landclim_maps-resample-landclim-maps" class="section level1">
 <h1><code>resample_landclim_maps</code>: Resample LandClim maps</h1>
-<div id="description-14" class="section level2">
+<div id="description-13" class="section level2">
 <h2>Description</h2>
 <p>Function to resample LandClim maps of any resolution to required resolution of 25 m (or 30 m).</p>
 </div>
-<div id="usage-12" class="section level2">
+<div id="usage-11" class="section level2">
 <h2>Usage</h2>
 <pre class="r"><code>  resample_landclim_maps(landClimRasterStack, targetResolution = 25)</code></pre>
 </div>
-<div id="arguments-12" class="section level2">
+<div id="arguments-11" class="section level2">
 <h2>Arguments</h2>
 <table>
 <thead>
@@ -864,15 +802,15 @@ $(document).ready(function () {
 </tbody>
 </table>
 </div>
-<div id="value-8" class="section level2">
+<div id="value-7" class="section level2">
 <h2>Value</h2>
 <p>Raster stack ready to be written in LandClim format.</p>
 </div>
-<div id="seealso-6" class="section level2">
+<div id="seealso-5" class="section level2">
 <h2>Seealso</h2>
 <p><a href="write_landclim_maps.html"><code>write_landclim_maps</code></a></p>
 </div>
-<div id="examples-12" class="section level2">
+<div id="examples-11" class="section level2">
 <h2>Examples</h2>
 <p>```r gk_projection&lt;-CRS(“+init=epsg:31467”) require(raster) nr &lt;- 20 nc &lt;- 20 res &lt;- 45 ex &lt;- extent(0, nc<em>res, 0, nr</em>res) dem &lt;- raster(nrows=nr, ncols=nc, ex) projection(dem) &lt;- gk_projection dem[] &lt;- rep(seq(500, 2200,len=nr), each=nc)</p>
 <p>### LandClim map “slope” and “aspect”. slope &lt;- terrain(dem, filename=“slopeAspect.tif”, opt=‘slope’, unit=“degrees”, overwrite = TRUE) slope[]&lt;- 0</p>
@@ -888,15 +826,15 @@ $(document).ready(function () {
 <div id="run_landclim" class="section level1">
 <h1><code>run_landclim</code>:</h1>
 <p>Run LandClim on Ubuntu</p>
-<div id="description-15" class="section level2">
+<div id="description-14" class="section level2">
 <h2>Description</h2>
 <p>%% ~~ A concise (1-5 lines) description of what the function does. ~~</p>
 </div>
-<div id="usage-13" class="section level2">
+<div id="usage-12" class="section level2">
 <h2>Usage</h2>
 <pre class="r"><code>run_landclim(control_file)</code></pre>
 </div>
-<div id="arguments-13" class="section level2">
+<div id="arguments-12" class="section level2">
 <h2>Arguments</h2>
 <table style="width:43%;">
 <colgroup>
@@ -921,11 +859,11 @@ $(document).ready(function () {
 <h2>Details</h2>
 <p>The working directory needs to be set to the level above “Input” and “Output” folders of LandClim, thus at the “site” level. Until now, the folder names are hard-coded, thus need to be “Input” and “Output”, not e.g. input! Feel free to fix this!</p>
 </div>
-<div id="value-9" class="section level2">
+<div id="value-8" class="section level2">
 <h2>Value</h2>
 <p>%% ~Describe the value returned %% If it is a LIST, use %% {comp1 }{Description of ‘comp1’} %% {comp2 }{Description of ‘comp2’} %% …</p>
 </div>
-<div id="seealso-7" class="section level2">
+<div id="seealso-6" class="section level2">
 <h2>Seealso</h2>
 <p>%% ~~objects to See Also as , <sub>~</sub></p>
 </div>
@@ -941,7 +879,7 @@ $(document).ready(function () {
 <h2>References</h2>
 <p>%% ~put references to the literature/web site here ~</p>
 </div>
-<div id="examples-13" class="section level2">
+<div id="examples-12" class="section level2">
 <h2>Examples</h2>
 <p>```r</p>
 <p>```</p>
@@ -950,15 +888,15 @@ $(document).ready(function () {
 <div id="tree_coordinates" class="section level1">
 <h1><code>tree_coordinates</code>:</h1>
 <p>Calculate tree coordinates.</p>
-<div id="description-16" class="section level2">
+<div id="description-15" class="section level2">
 <h2>Description</h2>
 <p>%% ~~ A concise (1-5 lines) description of what the function does. ~~</p>
 </div>
-<div id="usage-14" class="section level2">
+<div id="usage-13" class="section level2">
 <h2>Usage</h2>
 <pre class="r"><code>  tree_coordinates(file, a = 25, biomasslargetrees = 10, decade = 30, oldtrees = NULL, silent = TRUE)</code></pre>
 </div>
-<div id="arguments-14" class="section level2">
+<div id="arguments-13" class="section level2">
 <h2>Arguments</h2>
 <table style="width:43%;">
 <colgroup>
@@ -999,11 +937,11 @@ $(document).ready(function () {
 </tbody>
 </table>
 </div>
-<div id="value-10" class="section level2">
+<div id="value-9" class="section level2">
 <h2>Value</h2>
 <p>Data frame with coordinates for trees, ready to use in <a href="plot_forest.html"><code>plot_forest</code></a> .</p>
 </div>
-<div id="seealso-8" class="section level2">
+<div id="seealso-7" class="section level2">
 <h2>Seealso</h2>
 <p><a href="plot_forest.html"><code>plot_forest</code></a></p>
 </div>
@@ -1015,7 +953,7 @@ $(document).ready(function () {
 <h2>References</h2>
 <p>%% ~put references to the literature/web site here ~</p>
 </div>
-<div id="examples-14" class="section level2">
+<div id="examples-13" class="section level2">
 <h2>Examples</h2>
 <p>```r trees &lt;- tree_coordinates(file=system.file(“fullOut_50.csv”, package = “LandClimTools”), a=25)</p>
 <p>### Function also creates tree ID for su ## oldtrees &lt;- tree_coordinates(file=paste(path, “fullOut_49.csv”, sep=“”), a=25, decade=39, oldtrees=NULL) ## trees &lt;- tree_coordinates(file=paste(path, “fullOut_50.csv”, sep=“”), a=25, decade=40, oldtrees=oldtrees)</p>
@@ -1025,15 +963,15 @@ $(document).ready(function () {
 <div id="write_landclim_maps" class="section level1">
 <h1><code>write_landclim_maps</code>:</h1>
 <p>%% ~~function to do … ~~ Write landClim maps</p>
-<div id="description-17" class="section level2">
+<div id="description-16" class="section level2">
 <h2>Description</h2>
 <p>%% ~~ A concise (1-5 lines) description of what the function does. ~~ Takes raster stack in the appropiate resolution and writes LandClim maps in the required format.</p>
 </div>
-<div id="usage-15" class="section level2">
+<div id="usage-14" class="section level2">
 <h2>Usage</h2>
 <pre class="r"><code>write_landclim_maps(landClimRasterStack, nodata_value = &quot;-9999&quot;, lcResolution = 25, folder)</code></pre>
 </div>
-<div id="arguments-15" class="section level2">
+<div id="arguments-14" class="section level2">
 <h2>Arguments</h2>
 <table>
 <thead>
@@ -1066,11 +1004,11 @@ $(document).ready(function () {
 <h2>Details</h2>
 <p>%% ~~ If necessary, more details than the description above ~~</p>
 </div>
-<div id="value-11" class="section level2">
+<div id="value-10" class="section level2">
 <h2>Value</h2>
 <p>%% ~Describe the value returned %% If it is a LIST, use %% {comp1 }{Description of ‘comp1’} %% {comp2 }{Description of ‘comp2’} %% …</p>
 </div>
-<div id="seealso-9" class="section level2">
+<div id="seealso-8" class="section level2">
 <h2>Seealso</h2>
 <p>%% ~~objects to See Also as , <sub>~</sub></p>
 </div>
@@ -1086,7 +1024,7 @@ $(document).ready(function () {
 <h2>References</h2>
 <p>%% ~put references to the literature/web site here ~</p>
 </div>
-<div id="examples-15" class="section level2">
+<div id="examples-14" class="section level2">
 <h2>Examples</h2>
 <p>```r ##—- Should be DIRECTLY executable !! —- ##– ==&gt; Define data, use random, ##–or do help(data=index) for the standard data sets.</p>
 <p>## The function is currently defined as function (LandClimRasterStack, nodata_value = “-9999”, lcResolution = 25, ex) { LandClimRasterStack_list &lt;- lapply(unstack(LandClimRasterStack), function(x) crop(x, ex)) rs &lt;- stack(LandClimRasterStack_list) names(rs) &lt;- names(LandClimRasterStack) writeRaster(rs, “landClimMaps.tif”, overwrite = TRUE) rm(rs) foo &lt;- function(x) { sink(paste(names(x), “.asc”, sep = “”)) writeLines(c(paste(“ncols”, ncol(x)), paste(“nrows”, nrow(x)), paste(“xllcorner”, xmin(x)), paste(“yllcorner”, ymin(x)), paste(“cellsize”, lcResolution), paste(“nodata_value”, nodata_value))) sink() write.table(matrix(round(x[]), nrow = nrow(x), ncol = ncol(x), byrow = TRUE), file = paste(names(x), “.asc”, sep = “”), append = TRUE, quote = FALSE, row.names = FALSE, col.names = FALSE) } lapply(LandClimRasterStack_list, function(x) foo(x)) } ```</p>
@@ -1094,15 +1032,15 @@ $(document).ready(function () {
 </div>
 <div id="write_species_xml-write-landclim-species-parameter-file" class="section level1">
 <h1><code>write_species_xml</code>: Write LandClim species parameter file</h1>
-<div id="description-18" class="section level2">
+<div id="description-17" class="section level2">
 <h2>Description</h2>
 <p>Writes the given data into the given file in the XML-format for species of LandClim</p>
 </div>
-<div id="usage-16" class="section level2">
+<div id="usage-15" class="section level2">
 <h2>Usage</h2>
 <pre class="r"><code>  write_species_xml(x, file)</code></pre>
 </div>
-<div id="arguments-16" class="section level2">
+<div id="arguments-15" class="section level2">
 <h2>Arguments</h2>
 <table>
 <thead>
@@ -1123,11 +1061,11 @@ $(document).ready(function () {
 </tbody>
 </table>
 </div>
-<div id="seealso-10" class="section level2">
+<div id="seealso-9" class="section level2">
 <h2>Seealso</h2>
 <p>read_species_xml</p>
 </div>
-<div id="examples-16" class="section level2">
+<div id="examples-15" class="section level2">
 <h2>Examples</h2>
 <p>```r ### Read example species file species_parameters &lt;- read_species_xml(system.file(“species.xml”, package = “LandClimTools”))</p>
 <p>### Write example species file write_species_xml(x = species_parameters, file = “piceabie.xml”) ```</p>

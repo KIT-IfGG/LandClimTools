@@ -413,60 +413,6 @@ The LandClimTools package contains several useful functions for working with the
  plot_forest(trees=stand, species=unique(stand$species),  scol=rainbow(length(unique(stand$species))), plotlegend=TRUE, aspect=1, cex=sqrt(stand$biomass)/2)
  ``` 
 
-# `plot_elevation_gradient`: 
- %%  ~~function to do ... ~~ 
- Plot elevation gradient
-
-
-## Description
-
-
- Create figure for elevation gradient for selected decade based on elevation aggregated LandClim output file.
-
-
-## Usage
-
-```r
-plot_elevation_gradient(elevationBiomassOut, species, selection = 10, lty = 1, cols = rainbow(length(species)), plotlegend = TRUE)
-```
-
-
-## Arguments
-
-Argument      |Description
-------------- |----------------
-```elevationBiomassOut```     |      %%     ~~Describe \code{elevationBiomassOut} here~~ 
-```species```     |      %%     ~~Describe \code{species} here~~ 
-```selection```     |      %%     ~~Describe \code{selection} here~~ 
-```lty```     |      %%     ~~Describe \code{lty} here~~ 
-```cols```     |      %%     ~~Describe \code{cols} here~~ 
-```plotlegend```     |      %%     ~~Describe \code{plotlegend} here~~ 
-
-## Value
-
-
- %%  ~Describe the value returned 
- %%  If it is a LIST, use 
- %%  \item{comp1 }{Description of 'comp1'} 
- %%  \item{comp2 }{Description of 'comp2'} 
- %% ... 
-
-
-## Seealso
-
-
-  [`plot_forest`](plot_forest.html) 
-
-
-## Examples
-
-```r 
- dat <- read.table(system.file("elevation_biomass_out.csv", package = "LandClimTools"), sep=",", dec=".", header=TRUE)
- 
- species <- c("abiealba" , "piceabie", "fagusylv", "pinusilv", "querpetr")
- plot_elevation_gradient(elevationBiomassOut=dat, species=species, selection=30, lty=1,  cols= rainbow(length(species)))
- ``` 
-
 # `plot_forest`: Plot LandClim forest
 
 ## Description
