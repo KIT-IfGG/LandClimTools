@@ -3,8 +3,12 @@
 \alias{LandClimTools}
 \docType{package}
 
-\title{Package documentation for LandClimTools}
-\description{The LandClimTools package contains several useful functions for working with the LandClim software}
+\title{
+Package documentation for LandClimTools
+}
+\description{
+The LandClimTools package contains several useful functions for working with the LandClim software
+}
 
 \references{
   Website at ETH Zurich giving an introduction to LandClim:\cr
@@ -27,11 +31,9 @@
 
 
 \examples{
-library(LandClimTools)
-
 ###############################################################
 ### Create and write LandClim maps ####
-library(raster)
+require(raster)
 gk_projection<-CRS("+init=epsg:31467")
 nr <-50
 nc <- 50

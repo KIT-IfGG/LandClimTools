@@ -1,8 +1,12 @@
 \name{resample_landclim_maps}
 \alias{resample_landclim_maps}
 
-\title{Resample LandClim maps}
-\description{Function to resample LandClim maps of any resolution to required resolution of 25 m (or 30 m).}
+\title{
+Resample LandClim maps
+}
+\description{
+Function to resample LandClim maps of any resolution to required resolution of 25 m (or 30 m).
+}
 
 \usage{
   resample_landclim_maps(landClimRasterStack, targetResolution = 25)
@@ -10,7 +14,7 @@
 \arguments{
   \item{landClimRasterStack}{Raster stack (with all required input maps)}
   \item{targetResolution}{
-    %%     ~~Describe \code{targetResolution} here~~
+    
   }
 }
 \value{Raster stack ready to be written in LandClim format.}

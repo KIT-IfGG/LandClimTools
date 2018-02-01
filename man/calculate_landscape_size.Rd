@@ -1,8 +1,12 @@
 \name{calculate_landscape_size}
 \alias{calculate_landscape_size}
 
-\title{Calculate landscape size}
-\description{Function to caculate the landscape size using the LandClim input digital elevation ascii-file (e.g. dem.asc).}
+\title{
+Calculate landscape size
+}
+\description{
+Function to caculate the landscape size using the LandClim input digital elevation ascii-file (e.g. dem.asc).
+}
 
 \usage{
   calculate_landscape_size(dem)

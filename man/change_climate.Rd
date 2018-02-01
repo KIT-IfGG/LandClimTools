@@ -1,7 +1,9 @@
 \name{change_climate}
 \alias{change_climate}
 
-\title{Simulate climate change.}
+\title{
+Simple climate change
+}
 \description{
   The funcion reads a LandClim climate file and adds a constant to temperature and precipitation.
 }

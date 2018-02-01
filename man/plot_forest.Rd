@@ -1,13 +1,16 @@
 \name{plot_forest}
 \alias{plot_forest}
 
-\title{Plot LandClim forest}
-\description{Plots a forest based on tree data from LandClim}
+\title{
+Plot LandClim forest
+}
+\description{
+Plots a forest based on tree data from LandClim.
+}
 
 \usage{
   plot_forest(trees, species = unique(trees$species), scol = rainbow(length(species)), plotlegend = TRUE, a = 25, aspect = 1, cex = 1)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{trees}{Object created by function tree_coordinates.}
   \item{species}{Species names, character vector.}

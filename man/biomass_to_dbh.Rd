@@ -1,8 +1,12 @@
 \name{biomass_to_dbh}
 \alias{biomass_to_dbh}
 
-\title{LandClim allomentry for biomass to DBH conversion.}
-\description{Converts biomass to DBH}
+\title{
+LandClim allomentry conversion
+}
+\description{
+Converts biomass to DBH using LandClim allomentries
+}
 
 \usage{
   biomass_to_dbh(biomass, leafHabit, allometry = "SCHUMACHER")

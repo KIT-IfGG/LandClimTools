@@ -1,30 +1,28 @@
 \name{profound_climate_to_landclim}
 \alias{profound_climate_to_landclim}
-%- Also NEED an '\alias' for EACH other topic documented here.
+
 \title{
-Complile climate from Profound database 
+Profound climate to LandClim 
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Complile climate data from the Profound database to the format needed as input file for LandClim
 }
 \usage{
 profound_climate_to_landclim(climate, header, file = "climate.txt")
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
   \item{climate}{
 Dataframe as provided by the PROFOUND database, e.g. ProfoundData::getData("Soro", "CLIMATE").
 }
   \item{header}{
-Header information as provided by readLines("landclim_climate.txt").
+Header information as provided by readLines("landclim_climate.txt"). I.e. read in an existing LandClim climate input file and provide it as function argument.
 }
   \item{file}{
-Output filename.
+Output filename
 }
 }
-\details{
 
-}
 \value{
 Written text file with landclim climate.
 }
@@ -43,10 +41,6 @@ Klara Dolos
 
 
 \examples{
- ### Todo
+ ### See https://github.com/KIT-IfGG/climate_impact_research_2 for example code
 
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

@@ -2,7 +2,7 @@
 
 <!-- toc -->
 
-januari 31, 2018
+februari 01, 2018
 
 # DESCRIPTION
 
@@ -25,11 +25,15 @@ Depends:
   XML```
 
 
-# `biomass_to_dbh`: LandClim allomentry for biomass to DBH conversion.
+# `biomass_to_dbh`: 
+ LandClim allomentry conversion
+
 
 ## Description
 
-Converts biomass to DBH
+
+ Converts biomass to DBH using LandClim allomentries
+
 
 ## Usage
 
@@ -62,11 +66,15 @@ the value converted to DBH
  biomass_to_dbh(biomass=3, leafHabit="DECIDUOUS", allometry = "SCHUMACHER")
  ``` 
 
-# `calculate_landscape_size`: Calculate landscape size
+# `calculate_landscape_size`: 
+ Calculate landscape size
+
 
 ## Description
 
-Function to caculate the landscape size using the LandClim input digital elevation ascii-file (e.g. dem.asc).
+
+ Function to caculate the landscape size using the LandClim input digital elevation ascii-file (e.g. dem.asc).
+
 
 ## Usage
 
@@ -91,7 +99,9 @@ the calculated landscape size
  ## calculate_landscape_size(dem="simulations/input/dem.asc")
  ``` 
 
-# `change_climate`: Simulate climate change.
+# `change_climate`: 
+ Simple climate change
+
 
 ## Description
 
@@ -136,7 +146,9 @@ Klara Dolos
  }
  ``` 
 
-# `create_movie`: Create succession movie
+# `create_movie`: 
+ Create succession movie
+
 
 ## Description
 
@@ -183,11 +195,15 @@ Argument      |Description
  
  ``` 
 
-# `dbh_to_biomass`: LandClim allomentry for biomass - DBH conversion.
+# `dbh_to_biomass`: 
+ LandClim allomentry for biomass - DBH conversion
+
 
 ## Description
 
-Converts DBH to biomass
+
+ Converts DBH to biomass
+
 
 ## Usage
 
@@ -221,12 +237,14 @@ the value converted to biomass
  dbh_to_biomass(dbh=dat, leafHabit="DECIDUOUS", allometry = "SCHUMACHER")
  ``` 
 
-# `global_coordinates`: Convert local to global coordinates
+# `global_coordinates`: 
+ Local to global coordinates
+
 
 ## Description
 
 
- Takes local coordinates, the numbers of rows/columns and the width/height of each part of the grid. From that the global coordinates are calculated
+ Takes local coordinates, the numbers of rows/columns and the width/height of each part of the grid. From that the global coordinates are calculated.
 
 
 ## Usage
@@ -248,7 +266,9 @@ Argument      |Description
 
 ## Value
 
-Global coordinates data frame
+
+ Global coordinates data frame
+
 
 # `landclim_colors`: 
  LandClim color palette
@@ -302,11 +322,15 @@ Argument      |Description
  
  ``` 
 
-# `LandClimTools-package`: Package documentation for LandClimTools
+# `LandClimTools-package`: 
+ Package documentation for LandClimTools
+
 
 ## Description
 
-The LandClimTools package contains several useful functions for working with the LandClim software
+
+ The LandClimTools package contains several useful functions for working with the LandClim software
+
 
 ## References
 
@@ -330,11 +354,9 @@ The LandClimTools package contains several useful functions for working with the
 ## Examples
 
 ```r 
- library(LandClimTools)
- 
  ###############################################################
  ### Create and write LandClim maps ####
- library(raster)
+ require(raster)
  gk_projection<-CRS("+init=epsg:31467")
  nr <-50
  nc <- 50
@@ -400,11 +422,15 @@ The LandClimTools package contains several useful functions for working with the
  plot_forest(trees=stand, species=unique(stand$species),  scol=rainbow(length(unique(stand$species))), plotlegend=TRUE, aspect=1, cex=sqrt(stand$biomass)/2)
  ``` 
 
-# `plot_forest`: Plot LandClim forest
+# `plot_forest`: 
+ Plot LandClim forest
+
 
 ## Description
 
-Plots a forest based on tree data from LandClim
+
+ Plots a forest based on tree data from LandClim.
+
 
 ## Usage
 
@@ -507,13 +533,13 @@ Argument      |Description
  ``` 
 
 # `profound_climate_to_landclim`: 
- Complile climate from Profound database
+ Profound climate to LandClim
 
 
 ## Description
 
 
- %%  ~~ A concise (1-5 lines) description of what the function does. ~~ 
+ Complile climate data from the Profound database to the format needed as input file for LandClim
 
 
 ## Usage
@@ -528,35 +554,13 @@ profound_climate_to_landclim(climate, header, file = "climate.txt")
 Argument      |Description
 ------------- |----------------
 ```climate```     |      Dataframe as provided by the PROFOUND database, e.g. ProfoundData::getData("Soro", "CLIMATE").
-```header```     |      Header information as provided by readLines("landclim_climate.txt").
-```file```     |      Output filename.
-
-## Details
-
-
- %%  ~~ If necessary, more details than the description above ~~ 
-
+```header```     |      Header information as provided by readLines("landclim_climate.txt"). I.e. read in an existing LandClim climate input file and provide it as function argument.
+```file```     |      Output filename
 
 ## Value
 
 
- %%  ~Describe the value returned 
- %%  If it is a LIST, use 
- %%  \item{comp1 }{Description of 'comp1'} 
- %%  \item{comp2 }{Description of 'comp2'} 
- %% ... 
-
-
-## Seealso
-
-
- %% ~~objects to See Also as \code{\link{help}}, ~~~ 
-
-
-## Note
-
-
- %%  ~~further notes~~ 
+ Written text file with landclim climate.
 
 
 ## Author
@@ -568,44 +572,30 @@ Argument      |Description
 ## References
 
 
- %% ~put references to the literature/web site here ~ 
+ The Profound Database is available here: https://github.com/COST-FP1304-PROFOUND/TG2 (NOT YET, Feb 2018, contact Christopher Reyer, PIK).
+ 
+ http://cost-profound.eu/site
+ 
+ Examples for simulations for cost sites (Geoecology Master course 2017/18, Karlsruhe)
+ https://github.com/KIT-IfGG/climate_impact_research_2
+ 
 
 
 ## Examples
 
 ```r 
- ##---- Should be DIRECTLY executable !! ----
- ##-- ==>  Define data, use random,
- ##--or do  help(data=index)  for the standard data sets.
+ ### See https://github.com/KIT-IfGG/climate_impact_research_2 for example code
  
- ## The function is currently defined as
- function (climate, header, file = "climate.txt")
- {
- temp <- aggregate(climate$tmean_degC, by = list(mo = climate$mo,
- year = climate$year), mean)
- precip <- aggregate(climate$p_mm, by = list(mo = climate$mo,
- year = climate$year), sum)
- temp <- round(reshape(temp[, c("year", "mo", "x")], timevar = "mo",
- idvar = "year", direction = "wide"), 2)
- precip <- round(reshape(precip[, c("year", "mo", "x")], timevar = "mo",
- idvar = "year", direction = "wide"), 0)
- climate <- cbind(temp[, grep("x", names(temp))], precip[,
- grep("x", names(temp))])
- writeLines(header, con = file)
- write.table(climate, file = file, append = TRUE, col.names = FALSE)
- }
  ``` 
 
 # `read_species_xml`: 
- %%  ~~function to do ... ~~ 
- Read LandClim species parameters.
+ Read species XML
 
 
 ## Description
 
 
- %%  ~~ A concise (1-5 lines) description of what the function does. ~~ 
- Read LandClim species parameters from input file.(species.xml).
+ Read LandClim species parameters from input file (species.xml).
 
 
 ## Usage
@@ -619,22 +609,18 @@ read_species_xml(file)
 
 Argument      |Description
 ------------- |----------------
-```file```     |      %%     ~~Describe \code{file} here~~  File name.
+```file```     |       File name
 
 ## Details
 
 
- %%  ~~ If necessary, more details than the description above ~~ 
+ 
 
 
 ## Value
 
 
- %%  ~Describe the value returned 
- %%  If it is a LIST, use 
- %%  \item{comp1 }{Description of 'comp1'} 
- %%  \item{comp2 }{Description of 'comp2'} 
- %% ... 
+ 
  Data frame with one row for each species.
 
 
@@ -653,7 +639,7 @@ Argument      |Description
 ## References
 
 
- %% ~put references to the literature/web site here ~ 
+ 
 
 
 ## Examples
@@ -666,11 +652,15 @@ Argument      |Description
  write_species_xml(x = species_parameters, file = "piceabi.xml")
  ``` 
 
-# `resample_landclim_maps`: Resample LandClim maps
+# `resample_landclim_maps`: 
+ Resample LandClim maps
+
 
 ## Description
 
-Function to resample LandClim maps of any resolution to required resolution of 25 m (or 30 m).
+
+ Function to resample LandClim maps of any resolution to required resolution of 25 m (or 30 m).
+
 
 ## Usage
 
@@ -684,7 +674,7 @@ Function to resample LandClim maps of any resolution to required resolution of 2
 Argument      |Description
 ------------- |----------------
 ```landClimRasterStack```     |     Raster stack (with all required input maps)
-```targetResolution```     |       %%     ~~Describe \code{targetResolution} here~~  
+```targetResolution```     |       
 
 ## Value
 
@@ -740,13 +730,13 @@ Raster stack ready to be written in LandClim format.
  ``` 
 
 # `run_landclim`: 
- Run LandClim on Ubuntu
+ Run LandClim
 
 
 ## Description
 
 
- %%  ~~ A concise (1-5 lines) description of what the function does. ~~ 
+ 
 
 
 ## Usage
@@ -760,34 +750,21 @@ run_landclim(control_file)
 
 Argument      |Description
 ------------- |----------------
-```control_file```     |     Name of the control file (e.g. control.xml). %%     ~~Describe \code{x} here~~ 
+```control_file```     |     Name of the control file (e.g. control.xml). 
 
 ## Details
 
 
  The working directory needs to be set to the level above "Input" and "Output" folders of LandClim, thus at the "site" level. Until now, the folder names are hard-coded, thus need to be "Input" and "Output", not e.g. input! Feel free to fix this!
-
-
-## Value
-
-
- %%  ~Describe the value returned 
- %%  If it is a LIST, use 
- %%  \item{comp1 }{Description of 'comp1'} 
- %%  \item{comp2 }{Description of 'comp2'} 
- %% ... 
+ 
+ You need to set the path to your LandClim executable before you run LandClim using this function.
+ 
 
 
 ## Seealso
 
 
- %% ~~objects to See Also as \code{\link{help}}, ~~~ 
-
-
-## Note
-
-
- %%  ~~further notes~~ 
+ set_landclim_path
 
 
 ## Author
@@ -799,7 +776,7 @@ Argument      |Description
 ## References
 
 
- %% ~put references to the literature/web site here ~ 
+ ### Add LandClim refrences
 
 
 ## Examples
@@ -815,7 +792,7 @@ Argument      |Description
 ## Description
 
 
- %%  ~~ A concise (1-5 lines) description of what the function does. ~~ 
+ 
 
 
 ## Usage
@@ -832,9 +809,9 @@ Argument      |Description
 ```file```     |     LandClim output file, e.g. fullOut_30.csv.
 ```a```     |     Resolution of LandClim cells in meters, e.g. 25.
 ```biomasslargetrees```     |     Biomass in tons. Trees larger than the given value will be placed on a wider grid than the others.
-```decade```     |       % TODO: Document this parameter  
-```oldtrees```     |       % TODO: Document this parameter  
-```silent```     |       % TODO: Document this parameter  
+```decade```     |       
+```oldtrees```     |     Optional. Tree coordinates created by the same function, but "before" to preserve ids and coordinates.  
+```silent```     |      TRUE/FALSE 
 
 ## Value
 
@@ -857,7 +834,7 @@ Argument      |Description
 ## References
 
 
-  %% ~put references to the literature/web site here ~ 
+ 
 
 
 ## Examples
@@ -872,14 +849,13 @@ Argument      |Description
  ``` 
 
 # `write_landclim_maps`: 
- %%  ~~function to do ... ~~ 
+ 
  Write landClim maps
 
 
 ## Description
 
 
- %%  ~~ A concise (1-5 lines) description of what the function does. ~~ 
  Takes raster stack in the appropiate resolution and writes LandClim maps in the required format.
 
 
@@ -894,81 +870,92 @@ write_landclim_maps(landClimRasterStack, nodata_value = "-9999", lcResolution = 
 
 Argument      |Description
 ------------- |----------------
-```landClimRasterStack```     |       %%     ~~Describe \code{LandClimRasterStack} here~~  
-```nodata_value```     |       %%     ~~Describe \code{nodata_value} here~~  
-```lcResolution```     |       %%     ~~Describe \code{lcResolution} here~~  
-```folder```     |       % TODO: document this parameter  
+```landClimRasterStack```     |       
+```nodata_value```     |      In LandClim often 999. Or another value that should be used. 
+```lcResolution```     |      Cell edge length (e.g. 25) 
+```folder```     |      Path to folder in which files will be written. 
 
 ## Details
 
 
- %%  ~~ If necessary, more details than the description above ~~ 
+ 
 
 
 ## Value
 
 
- %%  ~Describe the value returned 
- %%  If it is a LIST, use 
- %%  \item{comp1 }{Description of 'comp1'} 
- %%  \item{comp2 }{Description of 'comp2'} 
- %% ... 
+ 
 
 
 ## Seealso
 
 
- %% ~~objects to See Also as \code{\link{help}}, ~~~ 
-
-
-## Note
-
-
- %%  ~~further notes~~ 
+ 
 
 
 ## Author
 
 
- %%  ~~who you are~~ 
+ Klara Dolos
 
 
 ## References
 
 
- %% ~put references to the literature/web site here ~ 
+ 
 
 
 ## Examples
 
 ```r 
- ##---- Should be DIRECTLY executable !! ----
- ##-- ==>  Define data, use random,
- ##--or do  help(data=index)  for the standard data sets.
+ ### Create and write LandClim maps ####
+ require(raster)
+ gk_projection<-CRS("+init=epsg:31467")
+ nr <-50
+ nc <- 50
+ res <- 40
+ ex <- extent(0, nc*res, 0, nr*res)
+ dem <- raster(nrows=nr, ncols=nc, ex)
+ projection(dem) <- gk_projection
+ dem
+ dem[] <- rep(seq(400, 2200,len=nr), each=nc)
+ x11()
+ plot(dem)
  
- ## The function is currently defined as
- function (LandClimRasterStack, nodata_value = "-9999", lcResolution = 25,
- ex)
- {
- LandClimRasterStack_list <- lapply(unstack(LandClimRasterStack),
- function(x) crop(x, ex))
- rs <- stack(LandClimRasterStack_list)
- names(rs) <- names(LandClimRasterStack)
- writeRaster(rs, "landClimMaps.tif", overwrite = TRUE)
- rm(rs)
- foo <- function(x) {
- sink(paste(names(x), ".asc", sep = ""))
- writeLines(c(paste("ncols", ncol(x)), paste("nrows",
- nrow(x)), paste("xllcorner", xmin(x)), paste("yllcorner",
- ymin(x)), paste("cellsize", lcResolution), paste("nodata_value ",
- nodata_value)))
- sink()
- write.table(matrix(round(x[]), nrow = nrow(x), ncol = ncol(x),
- byrow = TRUE), file = paste(names(x), ".asc", sep = ""),
- append = TRUE, quote = FALSE, row.names = FALSE, col.names = FALSE)
- }
- lapply(LandClimRasterStack_list, function(x) foo(x))
- }
+ ### Create LandClim map "slope".
+ slope <- dem
+ slope[]<- 0
+ 
+ ###  LandClim map "soil".
+ soil <- dem
+ soil[] <- 20
+ soil  ### Check min, max values
+ 
+ ###  LandClim map "landtype".
+ landtype <- slope
+ landtype[] <- 1
+ 
+ ### Aspect
+ aspect <- slope
+ aspect[] <- 0
+ 
+ ###  LandClim map "nitrogen".
+ nitro <- slope
+ nitro[] <- 1
+ 
+ ### Create raster-stack
+ maps <- stack(dem, slope, aspect, soil, landtype, nitro)
+ names(maps) <- c("dem", "slope", "aspect", "soil", "landtype", "nitro")
+ x11()
+ plot(maps)
+ 
+ maps25 <- resample_landclim_maps(landClimRasterStack=maps)
+ res(maps25$dem)
+ 
+ ### Write as LandClim files.
+ write_landclim_maps(landClimRasterStack=maps25, nodata_value="-9999", lcResolution=25)
+ 
+ 
  ``` 
 
 # `write_species_xml`: Write LandClim species parameter file

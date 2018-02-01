@@ -1,7 +1,9 @@
 \name{create_movie}
 \alias{create_movie}
 
-\title{Create succession movie}
+\title{
+Create succession movie
+}
 \description{
 Creates a sequence of figures of the forest state from above displayed as a "movie".
 }
