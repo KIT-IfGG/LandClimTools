@@ -22,6 +22,13 @@ library(devtools)
 
 install_github("KIT-IfGG/LandClimTools")
 ```
+# Browse functions
+
+For a first overview see vignette/Reference_Manual_LandClimTools.md or the corresponding html file.
 
 # Infos
+
 There is another R-Package for LandClim users: https://gitlab.irstea.fr/austin.haffenden/landclimSetup
+
+There is code for the use of LandClim with the Profound database and the R-package. It is also hosted on GitHub. Please contact Chr. Reyer and K. Dolos for access. With ProfoundData you can use the repos https://github.com/KIT-IfGG/climate_impact_research_2 as example project.
+
