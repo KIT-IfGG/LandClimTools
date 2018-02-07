@@ -1,46 +1,24 @@
-
-lc_path=NULL # assign lc_path a value. Needed to avoid that `R CMD check` complains about "no visible binding for global variable ‘lc_path’"
-
-set_landclim_path <- function(landclim_path){
-  if(file.exists(landclim_path)) {
-    assign("lc_path", landclim_path, envir=globalenv())
-  } else {
-    print("Invalid path to LandClim executable.")
-    }
-}
-
-simulate <- function(control_file){
-  print("This is an old function. Use run_landclim() instead.")
-  ### Todo: Prototype!
-  oldwd <- getwd()
-  setwd(paste(getwd(), "/Input/", sep=""))
-  if(file.exists(control_file)) {
-    system(paste(lc_path, control_file, sep=" "))
-
-  } else {
-    print("Invalid path to LandClim control file.")
-  }
-  setwd(oldwd)
-}
-
 run_landclim <- function(control_file = "control.xml") {
-  print("Works only for Ubuntu until now!")
-  print("Working directory must be at the site level.")
-  
-  if (file.exists(paste0("Input/", control_file, sep = "")) & file.exists(lc_path)) {
+  cat("Works only for Ubuntu until now!\n")
+  cat("Working directory must be at the site level.\n")
+  lc_path <- Sys.which("landclim")["landclim"]
+  input_dir <- paste(getwd(), "Input", sep="/")
+  output_dir <- paste(getwd(), "Output", sep="/")
+  control_file <- paste(input_dir, "control.xml", sep="/")
+  cat(paste0("Landclim executable: ", lc_path, "\nInput directory: ", input_dir, "\nOutput directory: ", output_dir, "\n"))
+
+  if (!file.exists(lc_path)) {
+    cat(paste0("Could not find the LandClim executable! Make sure you can start LandClim in any working directory only by typing 'landclim' (see manual for details).\n"))
+  } else if (!file.exists(control_file)) {
+    cat(paste0("The control file does not exist! It must be located at the following path: ", control_file, "\n"))
+  } else {
     oldwd <- getwd()
-    dir.create("Output")
+    dir.create(output_dir, showWarnings = FALSE)
     file.remove(list.files("Output", full=TRUE))
-    setwd(paste(oldwd, "/Input/", sep = ""))
-    system(paste0(lc_path, " ", control_file))
+    setwd(input_dir)
+    system2(lc_path, control_file)
     setwd(oldwd)
     clean_output_ubuntu()
-  } else {
-    print("Invalid path to LandClim executable or to control file.")
-    print(paste0("Landclim path: ", lc_path))
-    print(paste0("Control file: ", paste(getwd(), "/Input/", control_file, sep = "")))
-    print(paste0("Names of *INPUT* and *OUTPUT* folders in the control file unfortunately must be Input and Output:"))
-    print(list.files())
   }
 }
 
@@ -48,7 +26,6 @@ run_landclim <- function(control_file = "control.xml") {
 
 clean_output_ubuntu <- function(){
   fis <- list.files()
-  file.copy(fis[grep("Output", fis)], paste("Output/",fis[grep("Output", fis)], sep=""))
-  file.remove(fis[grep(c("csv"), fis)])
-  file.remove(fis[grep(c("txt"), fis)])
+  file.copy(fis[grep("Output", fis)], paste("Output/",fis[grep("Output", fis)], sep="")) # Why is the `Output` directory copied into itself?
+  file.remove(fis[grep(c("\\.(csv|txt)$"), fis)])
 }
