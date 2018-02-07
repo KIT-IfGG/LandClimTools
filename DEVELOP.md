@@ -2,7 +2,7 @@
 
 *we currently don't have a guide on setting up the environment on Windows machines*
 
-# Ubuntu 16.04 LTS (Xenial Xerus)
+# Ubuntu
 
 ## Setting up the development environment
 
@@ -15,8 +15,13 @@ First install the required software:
 * Geospatial Data Abstraction Library `libgdal` ≥ 1.6.3 (required by the R-package `rgdal`)
 
 All of those are in the main Ubuntu repositories, so they can simply be installed by executing the following command in the command line:
+For Ubuntu 16.04 (Xenial Xerus):
 ```bash
 $ sudo apt install git texlive r-base libxml2-dev libproj-dev libgdal-dev
+```
+For Ubuntu 17.10 (Artful Aardvark):
+```bash
+$ sudo apt install git texlive r-base libxml2-dev libproj-dev libgdal-dev libudunits2-dev
 ```
 
 ---
