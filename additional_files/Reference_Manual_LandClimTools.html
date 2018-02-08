@@ -203,7 +203,7 @@ hr {
 <body>
 <!-- toc -->
 
-<p>februari 01, 2018</p>
+<p>februari 08, 2018</p>
 
 <h1>DESCRIPTION</h1>
 
@@ -225,20 +225,117 @@ Depends:
   XML```
 
 
-# `biomass_to_dbh`: 
- LandClim allomentry conversion
+# `LandClimTools-package`: 
+ Package documentation for LandClimTools
 
 
 ## Description
 
 
- Converts biomass to DBH using LandClim allomentries
+ The LandClimTools package contains several useful functions for working with the LandClim software
 
 
-## Usage
+## References
 
-```r
-  biomass_to_dbh(biomass, leafHabit, allometry = &quot;SCHUMACHER&quot;)
+
+ Website at ETH Zurich giving an introduction to LandClim: list() 
+  [https://www1.ethz.ch/fe/research/disturbance/landclim](https://www1.ethz.ch/fe/research/disturbance/landclim) 
+
+ Website about the LandClim software: list() 
+  [https://uwis-server102.ethz.ch/openaccess/software/view/2](https://uwis-server102.ethz.ch/openaccess/software/view/2) 
+
+ Style guide for R packages by Hadley Wickham: list() 
+  [http://r-pkgs.had.co.nz/style.html](http://r-pkgs.had.co.nz/style.html) 
+
+  [Schumacher, S., H. Bugmann, and D. J. Mladenoff. 2004. Improving the formulation of tree growth and succession in a spatially explicit landscape model. Ecological Modelling 180:175-194.](https://dx.doi.org/10.1016/j.ecolmodel.2003.12.055) 
+
+  [Schumacher, S. and H. Bugmann. 2006. The relative importance of climatic effects, wildfires and management for future forest landscape dynamics in the Swiss Alps. Global Change Biology 12:1435-1450.](https://dx.doi.org/10.1111/j.1365-2486.2006.01188.x) 
+
+  [Schumacher, S., B. Reineking, J. Sibold, and H. Bugmann. 2006. Modeling the impact of climate and vegetation on fire regimes in mountain landscapes. Landscape Ecology 21:539-554.](https://dx.doi.org/10.1007/s10980-005-2165-7) 
+
+
+## Examples
+
+```r 
+ ###############################################################
+ ### Create and write LandClim maps ####
+ require(raster)
+ gk_projection&lt;-CRS(&quot;+init=epsg:31467&quot;)
+ nr &lt;-50
+ nc &lt;- 50
+ res &lt;- 40
+ ex &lt;- extent(0, nc*res, 0, nr*res)
+ dem &lt;- raster(nrows=nr, ncols=nc, ex)
+ projection(dem) &lt;- gk_projection
+ dem
+ dem[] &lt;- rep(seq(400, 2200,len=nr), each=nc)
+ x11()
+ plot(dem)
+
+ ### Create LandClim map &quot;slope&quot;.
+ slope &lt;- dem
+ slope[]&lt;- 0
+
+ ###  LandClim map &quot;soil&quot;.
+ soil &lt;- dem
+ soil[] &lt;- 20
+ soil  ### Check min, max values
+
+ ###  LandClim map &quot;landtype&quot;.
+ landtype &lt;- slope
+ landtype[] &lt;- 1
+
+ ### Aspect
+ aspect &lt;- slope
+ aspect[] &lt;- 0
+
+ ###  LandClim map &quot;nitrogen&quot;.
+ nitro &lt;- slope
+ nitro[] &lt;- 1
+
+ ### Create raster-stack
+ maps &lt;- stack(dem, slope, aspect, soil, landtype, nitro)
+ names(maps) &lt;- c(&quot;dem&quot;, &quot;slope&quot;, &quot;aspect&quot;, &quot;soil&quot;, &quot;landtype&quot;, &quot;nitro&quot;)
+ x11()
+ plot(maps)
+
+ maps25 &lt;- resample_landclim_maps(landClimRasterStack=maps)
+ res(maps25$dem)
+
+ ### Write as LandClim files.
+ write_landclim_maps(landClimRasterStack=maps25, nodata_value=&quot;-9999&quot;, lcResolution=25)
+
+ ################################################################### Plot LandClim output ####
+ ### Elevation gradient
+ dat &lt;- read.table(system.file(&quot;elevation_biomass_out.csv&quot;, package = &quot;LandClimTools&quot;), sep=&quot;,&quot;, dec=&quot;.&quot;, header=TRUE)
+ species &lt;- c(&quot;abiealba&quot; , &quot;piceabie&quot;, &quot;fagusylv&quot;, &quot;pinusilv&quot;, &quot;querpetr&quot;)
+ x11()
+ plot_elevation_gradient(elevationBiomassOut=dat, species=species, selection=30, lty=1,  cols= rainbow(length(species)))
+
+ ### LandClim forest
+ trees &lt;- tree_coordinates(file=system.file(&quot;fullOut_50.csv&quot;, package = &quot;LandClimTools&quot;), a=25)
+
+ stand &lt;- trees[trees$row &gt; 20 &amp; trees$row &lt;=40,]
+ stand$row &lt;- stand$row - min(stand$row)
+ stand &lt;- trees[trees$col &gt; 20 &amp; trees$col &lt;=40,]
+ stand$col &lt;- stand$col - min(stand$col)
+
+ x11(width=7, height=7)
+ par(mar=c(2,2,1,1))
+ plot_forest(trees=stand, species=unique(stand$species),  scol=rainbow(length(unique(stand$species))), plotlegend=TRUE, aspect=1, cex=sqrt(stand$biomass)/2)
+</code></pre>
+
+<h1><code>biomass_to_dbh</code>:</h1>
+
+<p>LandClim allomentry conversion</p>
+
+<h2>Description</h2>
+
+<p>Converts biomass to DBH using LandClim allomentries</p>
+
+<h2>Usage</h2>
+
+<pre><code class="r">  biomass_to_dbh(biomass, leafHabit, allometry = &quot;SCHUMACHER&quot;)
 </code></pre>
 
 <h2>Arguments</h2>
@@ -587,101 +684,6 @@ Depends:
  ### Get number of available colors.
  landclim_colors(99)
 
-</code></pre>
-
-<h1><code>LandClimTools-package</code>:</h1>
-
-<p>Package documentation for LandClimTools</p>
-
-<h2>Description</h2>
-
-<p>The LandClimTools package contains several useful functions for working with the LandClim software</p>
-
-<h2>References</h2>
-
-<p>Website at ETH Zurich giving an introduction to LandClim: list() 
-  <a href="https://www1.ethz.ch/fe/research/disturbance/landclim">https://www1.ethz.ch/fe/research/disturbance/landclim</a> </p>
-
-<p>Website about the LandClim software: list() 
-  <a href="https://uwis-server102.ethz.ch/openaccess/software/view/2">https://uwis-server102.ethz.ch/openaccess/software/view/2</a> </p>
-
-<p>Style guide for R packages by Hadley Wickham: list() 
-  <a href="http://r-pkgs.had.co.nz/style.html">http://r-pkgs.had.co.nz/style.html</a> </p>
-
-<p><a href="https://dx.doi.org/10.1016/j.ecolmodel.2003.12.055">Schumacher, S., H. Bugmann, and D. J. Mladenoff. 2004. Improving the formulation of tree growth and succession in a spatially explicit landscape model. Ecological Modelling 180:175-194.</a> </p>
-
-<p><a href="https://dx.doi.org/10.1111/j.1365-2486.2006.01188.x">Schumacher, S. and H. Bugmann. 2006. The relative importance of climatic effects, wildfires and management for future forest landscape dynamics in the Swiss Alps. Global Change Biology 12:1435-1450.</a> </p>
-
-<p><a href="https://dx.doi.org/10.1007/s10980-005-2165-7">Schumacher, S., B. Reineking, J. Sibold, and H. Bugmann. 2006. Modeling the impact of climate and vegetation on fire regimes in mountain landscapes. Landscape Ecology 21:539-554.</a> </p>
-
-<h2>Examples</h2>
-
-<pre><code class="r"> ###############################################################
- ### Create and write LandClim maps ####
- require(raster)
- gk_projection&lt;-CRS(&quot;+init=epsg:31467&quot;)
- nr &lt;-50
- nc &lt;- 50
- res &lt;- 40
- ex &lt;- extent(0, nc*res, 0, nr*res)
- dem &lt;- raster(nrows=nr, ncols=nc, ex)
- projection(dem) &lt;- gk_projection
- dem
- dem[] &lt;- rep(seq(400, 2200,len=nr), each=nc)
- x11()
- plot(dem)
-
- ### Create LandClim map &quot;slope&quot;.
- slope &lt;- dem
- slope[]&lt;- 0
-
- ###  LandClim map &quot;soil&quot;.
- soil &lt;- dem
- soil[] &lt;- 20
- soil  ### Check min, max values
-
- ###  LandClim map &quot;landtype&quot;.
- landtype &lt;- slope
- landtype[] &lt;- 1
-
- ### Aspect
- aspect &lt;- slope
- aspect[] &lt;- 0
-
- ###  LandClim map &quot;nitrogen&quot;.
- nitro &lt;- slope
- nitro[] &lt;- 1
-
- ### Create raster-stack
- maps &lt;- stack(dem, slope, aspect, soil, landtype, nitro)
- names(maps) &lt;- c(&quot;dem&quot;, &quot;slope&quot;, &quot;aspect&quot;, &quot;soil&quot;, &quot;landtype&quot;, &quot;nitro&quot;)
- x11()
- plot(maps)
-
- maps25 &lt;- resample_landclim_maps(landClimRasterStack=maps)
- res(maps25$dem)
-
- ### Write as LandClim files.
- write_landclim_maps(landClimRasterStack=maps25, nodata_value=&quot;-9999&quot;, lcResolution=25)
-
- ################################################################### Plot LandClim output ####
- ### Elevation gradient
- dat &lt;- read.table(system.file(&quot;elevation_biomass_out.csv&quot;, package = &quot;LandClimTools&quot;), sep=&quot;,&quot;, dec=&quot;.&quot;, header=TRUE)
- species &lt;- c(&quot;abiealba&quot; , &quot;piceabie&quot;, &quot;fagusylv&quot;, &quot;pinusilv&quot;, &quot;querpetr&quot;)
- x11()
- plot_elevation_gradient(elevationBiomassOut=dat, species=species, selection=30, lty=1,  cols= rainbow(length(species)))
-
- ### LandClim forest
- trees &lt;- tree_coordinates(file=system.file(&quot;fullOut_50.csv&quot;, package = &quot;LandClimTools&quot;), a=25)
-
- stand &lt;- trees[trees$row &gt; 20 &amp; trees$row &lt;=40,]
- stand$row &lt;- stand$row - min(stand$row)
- stand &lt;- trees[trees$col &gt; 20 &amp; trees$col &lt;=40,]
- stand$col &lt;- stand$col - min(stand$col)
-
- x11(width=7, height=7)
- par(mar=c(2,2,1,1))
- plot_forest(trees=stand, species=unique(stand$species),  scol=rainbow(length(unique(stand$species))), plotlegend=TRUE, aspect=1, cex=sqrt(stand$biomass)/2)
 </code></pre>
 
 <h1><code>plot_forest</code>:</h1>
