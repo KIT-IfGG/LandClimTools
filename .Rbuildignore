@@ -4,7 +4,7 @@
 \.Rproj\.user$
 \.Rhistory$
 \.RData$
-
+^additional_files/
 ^\.git/
 ^build/
 ^\.Rproj\.user$
