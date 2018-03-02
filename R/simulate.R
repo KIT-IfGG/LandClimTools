@@ -3,8 +3,6 @@ run_landclim <- function(control_file = "control.xml", input_folder="Input", out
   input_dir <- paste(getwd(), input_folder, sep="/")
   output_dir <- paste(getwd(), output_folder, sep="/")
   control_file <- paste(input_dir, "control.xml", sep="/")
-  
-  file.path(landclim_path)
   cat(paste0("Landclim executable: ", landclim_path, "\nInput directory: ", input_dir, "\nOutput directory: ", output_dir, "\n"))
   
   if (!file.exists(landclim_path)) {
@@ -18,7 +16,6 @@ run_landclim <- function(control_file = "control.xml", input_folder="Input", out
     setwd(input_dir)
     system2(landclim_path, control_file)
     setwd(oldwd)
-    clean_output_ubuntu()
   }
 }
 
