@@ -28,7 +28,8 @@ set_landclim_path <- function(landclim_path){
 }
 
 clean_output_ubuntu <- function(){
-  fis <- list.files()
-  file.copy(fis[grep("Output", fis)], paste("Output/",fis[grep("Output", fis)], sep="")) # Why is the `Output` directory copied into itself?
-  file.remove(fis[grep(c("\\.(csv|txt)$"), fis)])
+  fis <- list.files(sim_folder)
+  fis <- fis[grep("Output", fis)]
+  file.copy(paste(sim_folder, fis, sep="/"), paste(sim_folder, "Output", fis, sep="/")) 
+  file.remove(paste(sim_folder, fis, sep="/"))
 }
