@@ -27,9 +27,9 @@ set_landclim_path <- function(landclim_path){
   }
 }
 
-clean_output_ubuntu <- function(){
-  fis <- list.files(sim_folder)
+clean_output_ubuntu <- function(folder){
+  fis <- list.files(folder)
   fis <- fis[grep("Output", fis)]
-  file.copy(paste(sim_folder, fis, sep="/"), paste(sim_folder, "Output", fis, sep="/")) 
-  file.remove(paste(sim_folder, fis, sep="/"))
+  file.copy(paste(folder, fis, sep="/"), paste(folder, "Output", fis, sep="/")) 
+  file.remove(paste(folder, fis, sep="/"))
 }
